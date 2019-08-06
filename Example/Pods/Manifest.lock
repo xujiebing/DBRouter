@@ -1,0 +1,16 @@
+PODS:
+  - DBRouter (0.1.0)
+
+DEPENDENCIES:
+  - DBRouter (from `../`)
+
+EXTERNAL SOURCES:
+  DBRouter:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  DBRouter: 296dcff84cda072a8d35370a49503eedfbed3d30
+
+PODFILE CHECKSUM: 70d7b078e5edb46f76b9098d27d4675e66207dcb
+
+COCOAPODS: 1.7.0
