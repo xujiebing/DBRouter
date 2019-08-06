@@ -1,0 +1,13 @@
+use_frameworks!
+
+platform :ios, '8.0'
+
+target 'DBRouter_Example' do
+  pod 'DBRouter', :path => '../'
+
+  target 'DBRouter_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
