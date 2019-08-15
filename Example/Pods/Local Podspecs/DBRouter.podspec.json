@@ -18,5 +18,6 @@
   "platforms": {
     "ios": "8.0"
   },
-  "source_files": "DBRouter/Classes/**/*"
+  "source_files": "DBRouter/Classes/**/*",
+  "prefix_header_file": "DBRouter/Classes/DBRouterPrefixHeader.pch"
 }
