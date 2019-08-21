@@ -24,6 +24,6 @@
 #import <DBRouter/NSDictionary+DBRouter.h>
 #import <DBRouter/NSString+DBRouter.h>
 
-static NSString *DBRouterJumpType = @"jumptype";
+static NSString *kDBRouterJumpType = @"jumptype";
 
 #endif /* DBRouterPrefixHeader_pch */

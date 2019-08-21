@@ -13,10 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  判断字符串是否为空
-
- @return YES:空
  */
-- (BOOL)isEmpty;
++ (BOOL (^)(NSString *))dbIsEmpty;
 
 @end
 

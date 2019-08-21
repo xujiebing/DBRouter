@@ -7,6 +7,9 @@
 //
 
 #import "DBViewController.h"
+#import "NSDictionary+DBRouter.h"
+#import "NSString+DBRouter.h"
+#import "NSArray+DBRouter.h"
 
 @interface DBViewController ()
 
@@ -17,7 +20,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    NSDictionary *dic = [[NSMutableDictionary alloc] initWithDictionary:@{@"de":@"s"}];
+    NSString *d = NSMutableDictionary.dbObjectForKey(dic, @"de");
+    BOOL empty = NSDictionary.dbIsEmpty(dic);
+    if (empty) {
+        
+    }
 }
 
 - (void)didReceiveMemoryWarning

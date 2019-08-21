@@ -10,7 +10,7 @@
 @implementation DBRouterTool
 
 + (NSString *)URLDecodedString:(NSString *)str {
-    if (str.isEmpty) {
+    if (NSString.dbIsEmpty(str)) {
         return nil;
     }
     NSString *decodedString = (__bridge_transfer NSString*)CFURLCreateStringByReplacingPercentEscapesUsingEncoding(NULL, (__bridge CFStringRef)str, CFSTR(""),CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding));

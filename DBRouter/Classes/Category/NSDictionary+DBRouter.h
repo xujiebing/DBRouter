@@ -12,32 +12,33 @@ NS_ASSUME_NONNULL_BEGIN
 @interface NSDictionary (DBRouter)
 
 /**
- 获取字段value，防止越界crash
-
- @param key key
- @return value
+ 判断字典是否为空
  */
-- (id)dbObjectForKey:(NSString *)key;
++ (BOOL (^)(NSDictionary *))dbIsEmpty;
 
 /**
- 字典设置key value
- 
- @param value value
- @param key key
+ 获取字典value，防止越界crash
  */
-- (void)dbSetValue:(id)value forKey:(id)key;
++ (id (^)(NSDictionary *dic, NSString *key))dbObjectForKey;
 
 @end
 
 @interface NSMutableDictionary (DBRouter)
 
 /**
- 字典设置key object
- 
- @param object object
- @param key key
+ 判断字典是否为空
  */
-- (void)dbSetObject:(id)object forKey:(id)key;
++ (BOOL (^)(NSMutableDictionary *))dbIsEmpty;
+
+/**
+ 字典设置key value
+ */
++ (void (^)(NSMutableDictionary *dic, NSString *key, id value))dbSetValueForKey;
+
+/**
+ 字典设置key object
+ */
++ (void (^)(NSMutableDictionary *dic, NSString *key, id object))dbSetObjectForKey;
 
 @end
 

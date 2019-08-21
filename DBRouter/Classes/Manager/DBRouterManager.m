@@ -45,6 +45,10 @@ static DBRouterManager *sharedInstance = nil;
     return sharedInstance;
 }
 
+- (void)setScheme:(NSArray *)array {
+    
+}
+
 - (void)routerWithURL:(NSString *)url
                params:(NSDictionary *)params
              complete:(DBRouterComplete)complete {
@@ -77,7 +81,7 @@ static DBRouterManager *sharedInstance = nil;
     
     __block DBRouterModel *model = nil;
     NSParameterAssert(targetUrl.length != 0);
-    if (targetUrl.isEmpty) {
+    if (NSString.dbIsEmpty(targetUrl)) {
         DBRouterLog(@"url为空...");
         return model;
     }
@@ -97,7 +101,7 @@ static DBRouterManager *sharedInstance = nil;
     NSString *moduleName = [self p_moduleNameWithURLPath:components.path];
     NSParameterAssert(moduleName && moduleName.length != 0);
     
-    if(moduleName.isEmpty) {
+    if(NSString.dbIsEmpty(moduleName)) {
         DBRouterLog(@"[%@]模块名为空", targetUrl);
         return model;
     }
@@ -108,7 +112,7 @@ static DBRouterManager *sharedInstance = nil;
         return model;
     }
     
-    NSArray *array = [routers dbObjectForKey:moduleName];
+    NSArray *array = NSDictionary.dbObjectForKey(routers, moduleName);
     if(!array || array.count == 0) {
         DBRouterLog(@"获取 [%@] 下的对应路由配置信息为空", moduleName);
         return model;
@@ -167,11 +171,7 @@ static DBRouterManager *sharedInstance = nil;
         if([name isEqualToString:kDBRouterJumpType]) {
             return;
         }
-        
-        if (!value) {
-            value = @"";
-        }
-        [dic setObject:value forKey:name];
+        NSMutableDictionary.dbSetObjectForKey(dic, name, value);
     }];
     
     return dic;
@@ -282,7 +282,7 @@ static DBRouterManager *sharedInstance = nil;
         // 如果是必填参数, 则需要校验参数是否为*或者为空
         if (hasRequireParameter) {
             NSString *tempName = [name stringByReplacingOccurrencesOfString:@"*" withString:@""];
-            NSString *value = [model.params dbObjectForKey:tempName];
+            NSString *value = NSDictionary.dbObjectForKey(model.params, tempName);
             
             if (!value || value.length == 0 || [value isEqualToString:@"*"]) {
                 DBRouterLog(@"[%@]未必填参数, 不能为空或*", value);
@@ -306,7 +306,7 @@ static DBRouterManager *sharedInstance = nil;
     if ([model.targetURLComponents.path isEqualToString:@"/tab"]) {
         NSUInteger index = 0;
         if (model.params) {
-            NSString *indexNum = [model.params dbObjectForKey:@"index"];
+            NSString *indexNum = NSDictionary.dbObjectForKey(model.params, @"index");
             if (indexNum) {
                 index = [indexNum integerValue];
             }
@@ -418,7 +418,7 @@ static DBRouterManager *sharedInstance = nil;
     UIViewController *vc = nil;
     
     // 1. 为空处理
-    if (model.url.isEmpty) {
+    if (NSString.dbIsEmpty(model.url)) {
         DBRouterLog(@"路由实体类或者URL为空");
         return self.notFoundViewController;
     }
@@ -432,11 +432,11 @@ static DBRouterManager *sharedInstance = nil;
     }
     
     // 3.根据请求参数判断是否有url进行不同页面处理
-    NSString *url = [model.params dbObjectForKey:@"url"];
+    NSString *url = NSDictionary.dbObjectForKey(model.params, @"url");
     NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:model.params];
     if (url) {
         NSString *targetURL = [DBRouterTool URLDecodedString:url];
-        [params dbSetObject:targetURL forKey:@"url"];
+        NSMutableDictionary.dbSetObjectForKey(params, @"url", targetURL);
     }
     
     vc = [[class alloc] init];
@@ -500,7 +500,7 @@ static DBRouterManager *sharedInstance = nil;
 - (NSString *)p_moduleNameWithURLPath:(NSString *)path {
     
     NSString *moduleName = nil;
-    if (path.isEmpty) {
+    if (NSString.dbIsEmpty(path)) {
         DBRouterLog(@"url路径为空");
         return moduleName;
     }

@@ -12,8 +12,8 @@
 - (instancetype)initWithDic:(NSDictionary *)dic {
     self = [super init];
     if (self) {
-        _url = [dic dbObjectForKey:@"url"];
-        _className = [dic dbObjectForKey:@"iclass"];
+        _url = NSDictionary.dbObjectForKey(dic, @"url");
+        _className = NSDictionary.dbObjectForKey(dic, @"iclass");
     }
     return self;
 }
@@ -24,7 +24,7 @@
 }
 
 - (void)p_handlerParams:(NSString *)url {
-    if (url.isEmpty) {
+    if (NSString.dbIsEmpty(url)) {
         DBRouterLog(@"url 为空")
         return;
     }
@@ -40,10 +40,10 @@
     [items enumerateObjectsUsingBlock:^(NSURLQueryItem *item, NSUInteger idx, BOOL * _Nonnull stop) {
         NSString *name = item.name;
         NSString *value = item.value;
-        if (!name.isEmpty && [name isEqualToString:kDBRouterJumpType]) {
+        if (!NSString.dbIsEmpty(name) && [name isEqualToString:kDBRouterJumpType]) {
             jumpType = value.integerValue;
         }
-        [tempDic dbSetObject:value forKey:name];
+        NSMutableDictionary.dbSetObjectForKey(tempDic, name, value);
     }];
     // 处理跳转方式
     self.jumpType = jumpType;

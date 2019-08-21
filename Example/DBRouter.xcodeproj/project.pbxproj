@@ -23,6 +23,7 @@
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
 		71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
+		9B8AB7E4230CE632007E2FE9 /* DBTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B8AB7E3230CE632007E2FE9 /* DBTest.m */; };
 		9BF048D323022E840097CC30 /* router_white_list.json in Resources */ = {isa = PBXBuildFile; fileRef = 9BF048CF23022E840097CC30 /* router_white_list.json */; };
 		9BF048D423022E840097CC30 /* router_class_list.json in Resources */ = {isa = PBXBuildFile; fileRef = 9BF048D023022E840097CC30 /* router_class_list.json */; };
 		9BF048D523022E840097CC30 /* domain_white_list.json in Resources */ = {isa = PBXBuildFile; fileRef = 9BF048D123022E840097CC30 /* domain_white_list.json */; };
@@ -67,6 +68,7 @@
 		850A62070671C8E065824180 /* DBRouter.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = DBRouter.podspec; path = ../DBRouter.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9592D35458DFCF412E7E5FA5 /* Pods-DBRouter_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DBRouter_Tests.release.xcconfig"; path = "Target Support Files/Pods-DBRouter_Tests/Pods-DBRouter_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		9B8AB7E3230CE632007E2FE9 /* DBTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DBTest.m; sourceTree = "<group>"; };
 		9BF048CF23022E840097CC30 /* router_white_list.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = router_white_list.json; sourceTree = "<group>"; };
 		9BF048D023022E840097CC30 /* router_class_list.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = router_class_list.json; sourceTree = "<group>"; };
 		9BF048D123022E840097CC30 /* domain_white_list.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = domain_white_list.json; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				6003F5BB195388D20070C39A /* Tests.m */,
+				9B8AB7E3230CE632007E2FE9 /* DBTest.m */,
 				6003F5B6195388D20070C39A /* Supporting Files */,
 			);
 			path = Tests;
@@ -264,7 +267,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = DB;
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 1030;
 				ORGANIZATIONNAME = xujiebing;
 				TargetAttributes = {
 					6003F589195388D20070C39A = {
@@ -403,6 +406,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6003F5BC195388D20070C39A /* Tests.m in Sources */,
+				9B8AB7E4230CE632007E2FE9 /* DBTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

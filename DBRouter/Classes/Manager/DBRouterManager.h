@@ -16,9 +16,31 @@ typedef void(^DBRouterComplete)(BOOL complete);
 + (DBRouterManager *)shareInstance;
 
 /**
+ 设置合法scheme
+ 
+ @param array scheme array
+ */
+- (void)setScheme:(NSArray *)array;
+
+/**
+ 根据路由url和参数进行跳转
+ 
+ @param url 跳转url
+ @param params 参数
+ @param complete 回调
+ */
+- (void)routerWithURL:(NSString *_Nonnull)url
+               params:(NSDictionary *_Nullable)params
+             complete:(DBRouterComplete _Nullable)complete;
+
+
+
+/**
  初始化路由
  */
 - (void)initRouter;
+
+
 
 /**
  根据路由名进行路由跳转
@@ -50,16 +72,7 @@ typedef void(^DBRouterComplete)(BOOL complete);
 //
 //
 
-/**
- 根据路由url和参数进行跳转
 
- @param url 跳转url
- @param params 参数
- @param complete 回调
- */
-- (void)routerWithURL:(NSString *_Nonnull)url
-               params:(NSDictionary *_Nullable)params
-             complete:(DBRouterComplete _Nullable)complete;
 
 
 @end

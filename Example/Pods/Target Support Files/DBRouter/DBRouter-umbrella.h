@@ -10,7 +10,9 @@
 #endif
 #endif
 
+#import "NSArray+DBRouter.h"
 #import "NSDictionary+DBRouter.h"
+#import "NSObject+DBRouter.h"
 #import "NSString+DBRouter.h"
 #import "DBRouter.h"
 #import "DBRouterManager.h"
