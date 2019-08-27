@@ -6,7 +6,6 @@
 //
 
 #import "DBRouterBaseModel.h"
-#import <objc/runtime.h>
 
 @interface DBRouterBaseModel ()
 

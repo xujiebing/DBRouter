@@ -8,32 +8,36 @@
 
 /* Begin PBXBuildFile section */
 		0176ECE0159ADFE06A38C967C99FC45B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
-		074286BA0F6B744D0411E284E058CB16 /* DBRouter-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7DC8A76E0A63D344138130409DD433 /* DBRouter-dummy.m */; };
-		10815BBB7FF5866E0FC2B21559212B01 /* DBRouterBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 22E941F67274800FE065DBF3EA4DB715 /* DBRouterBaseModel.m */; };
-		1B5B86F6E3D98B999C0D98EE6C492650 /* DBRouterModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 45FDDEDE4E2CB35E8063A116AE020708 /* DBRouterModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1F3282141C3017DF1D3BCB768EDA3AD1 /* DBRouter.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FA4EB6F9FC5BA2ED6EA280C2950992F /* DBRouter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		01BDE168B2BABD9229A4C3BB85620E82 /* NSObject+DBRouterMethodSwizzling.h in Headers */ = {isa = PBXBuildFile; fileRef = 76599940470B85D3436DA65A07EA7432 /* NSObject+DBRouterMethodSwizzling.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		059D8FC2AA41AA8E45FAFD83C9CFC5ED /* DBRouterTool.h in Headers */ = {isa = PBXBuildFile; fileRef = 98B966493C5B1BE14DBDCE18CDB5A4CC /* DBRouterTool.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0DC843215CFD6EDFACFA966542C35C5F /* UIViewController+DBRouter.h in Headers */ = {isa = PBXBuildFile; fileRef = AD5FDCDF476D5306B78830B3DAB1AD6F /* UIViewController+DBRouter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		21209DE87E775D998D7079ACF8C946E5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
 		2238D8C28AF604B2DA61B407EA8A0526 /* Pods-DBRouter_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F3B104EBADB8422F568D3076F366F4A8 /* Pods-DBRouter_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2957A67E2EEEB667E552BEC3F33B64CC /* NSArray+DBRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = C495CF4CD61942D8C8D7C653F7288998 /* NSArray+DBRouter.m */; };
-		36EF02086AC2C4C418DDE40AC2D2D95C /* NSString+DBRouter.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AD343E7C608C56EDF9A89CC936A25C6 /* NSString+DBRouter.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		400B8EB35696D454ADB4526978B9803D /* DBRouterPrefixHeader.pch in Sources */ = {isa = PBXBuildFile; fileRef = 686CE9BDD4131DC0129CDFC5C5641E84 /* DBRouterPrefixHeader.pch */; };
-		5CBD3F2C4E58B2014FF3F15C3767409F /* DBRouterManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 535331A673188F867682872D860B8B7C /* DBRouterManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		70C84DE2F326F1A8156CE25DAD512210 /* UIViewController+DBRouter.h in Headers */ = {isa = PBXBuildFile; fileRef = 98755D58E8CF70EB82EE602B1345CE8D /* UIViewController+DBRouter.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		763CD924AD05D30FB97E7BF44CFDADF5 /* NSArray+DBRouter.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A4C894FB31D7E5E63C3DD87529DFCFB /* NSArray+DBRouter.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		89417E5D9430F25558BC26ADA65EBDA5 /* DBRouterTool.m in Sources */ = {isa = PBXBuildFile; fileRef = CB231BBB39D820913EACCD27AF55AB6E /* DBRouterTool.m */; };
-		9FF0B8D4624E23A8CDB45BBAC76C3C4A /* NSString+DBRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 39CC3C9CF00E05BA4C96A348A52E3280 /* NSString+DBRouter.m */; };
-		A6A440312DC23518E5EA3C606A1B8EFE /* DBRouter-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AF171003EF52748995974115B4B022A /* DBRouter-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A8780DFAE1C407589D4C3384E0C64832 /* DBRouterTool.h in Headers */ = {isa = PBXBuildFile; fileRef = 464A3C3156C73D6291F707F89752F4A6 /* DBRouterTool.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AD4C424BCC983FE964FAAF11F125288D /* DBRouterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5627ADF0088D8573003BC0DA86CCE437 /* DBRouterModel.m */; };
-		C77A7E21110ECD463621BD82526CDCCE /* NSDictionary+DBRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 92D572B371F0837E18D1E0A2B937B845 /* NSDictionary+DBRouter.m */; };
-		D9FE29807A44C3428282610DD6061DEC /* NSDictionary+DBRouter.h in Headers */ = {isa = PBXBuildFile; fileRef = A00D4988C0896D91510CB1027E3E9B27 /* NSDictionary+DBRouter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		29F62ED9BD20C0180F0C15A266D2B9E1 /* DBRouterPrefixHeader.pch in Sources */ = {isa = PBXBuildFile; fileRef = A2A40A9751264BB6E956B8520A231A34 /* DBRouterPrefixHeader.pch */; };
+		29F9457BB51A15A8A577CF0FDA8AFE2A /* DBRouter-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5636D2BCC0C5086C540D8A4FF60C2110 /* DBRouter-dummy.m */; };
+		39A5441693D77EDC02D092D49187F40C /* DBRouter-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A2E86D690CC96E9C89D3AABC2AF7314D /* DBRouter-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		451E479928044F54DF2DB90618581943 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+		5108838557D92A5F18FDD8660F0D65C8 /* DBRouterBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 94044E18D3140A4A88A22CC37DE47618 /* DBRouterBaseModel.m */; };
+		5E4D65DA9D52D6AB2E466ACCE368331F /* UIApplication+DBRouter.h in Headers */ = {isa = PBXBuildFile; fileRef = 0CF86F6496B9F038D3524BF3E62EE61B /* UIApplication+DBRouter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		613E9923D6054A78934990FC2DD37627 /* NSDictionary+DBRouter.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C33BE65F8F7559FE01B55617AFC1B29 /* NSDictionary+DBRouter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6B95F6276284A81BBA64DF3B01F87248 /* NSObject+DBRouterMethodSwizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = 72B6B2113532FA6F81DF7AA7D1FE9EEC /* NSObject+DBRouterMethodSwizzling.m */; };
+		722ADA1BDFE0254AC771B8CE8D00821F /* NSArray+DBRouter.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D1472DD525C7B36725C512A8FE2F5F3 /* NSArray+DBRouter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		749706CB8B0017FD53CE22462C0B139D /* DBRouterModel.h in Headers */ = {isa = PBXBuildFile; fileRef = A426D8C82828795B03D31F63742D825A /* DBRouterModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9076F6526EC1FDBF56BAF0175F05C86E /* NSArray+DBRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = B8322DE8972B3902123410CB5502208C /* NSArray+DBRouter.m */; };
+		A6484EFFBDF84DE95CAFFC39A6058071 /* NSString+DBRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = A178694A57D5A87DB5CB59E62D58D084 /* NSString+DBRouter.m */; };
+		ABA7C438A7C84500EDEE48157D92A975 /* DBRouterTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FE29965BC6AE608533DCDBDDC4CE059 /* DBRouterTool.m */; };
+		ADC55EBA375F8DBF5543EE7155A22AAB /* UIApplication+DBRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B861B5F84543EC72755F3B907CB8796 /* UIApplication+DBRouter.m */; };
+		B73C2E4C3888ABDE2A40597354187776 /* DBRouterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DA66A3692788249C8A165E68AA8E8FD /* DBRouterManager.m */; };
+		BCAF7CAB31CD6542F8E81D05F0D3EE33 /* DBRouterBaseModel.h in Headers */ = {isa = PBXBuildFile; fileRef = A07E8439B6326F1A4B70B6195277DE9C /* DBRouterBaseModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C43D0A2244ED5EA074560D179198CAC7 /* NSString+DBRouter.h in Headers */ = {isa = PBXBuildFile; fileRef = 101FEE8BDC5057213FFD6EF736519B21 /* NSString+DBRouter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DC388DF39E8B4A995314CC97468C946A /* Pods-DBRouter_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FDBF0FF8866AB4011C957D19D47889EE /* Pods-DBRouter_Example-dummy.m */; };
+		E29B082DA8A111032C140635A304A027 /* DBRouterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7DE84A1E78D5DBEC6D1C026863A8E5 /* DBRouterModel.m */; };
 		E3889A21FB1D097524666D339225F73F /* Pods-DBRouter_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AE069F2801471801F897D780E8D7BF6 /* Pods-DBRouter_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		ED377E917A55FE2858E0F80BB2B7E3EF /* DBRouterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C9B8D05A7638A79114D054C9CAC8698 /* DBRouterManager.m */; };
-		EE6188FB4BA5972C8D6D6383286444F9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
-		EF7571C49D3138394D406F263153AA8C /* DBRouterBaseModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 95EF2904FEA668A44DC6944317464618 /* DBRouterBaseModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EA74345E9A0BF076EE4A6DE1A2D32111 /* DBRouterManager.h in Headers */ = {isa = PBXBuildFile; fileRef = A79F66540E0A80DC5511B3E1FAA34924 /* DBRouterManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F335CA65D3B82E204A1768B50E965811 /* NSDictionary+DBRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = BD4DC5B90A5083C93BD8CEFB65E44152 /* NSDictionary+DBRouter.m */; };
 		F5193B3D89F39B53EF070ECB7163345C /* Pods-DBRouter_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D272809310C0883E63DA8674FD6CE631 /* Pods-DBRouter_Tests-dummy.m */; };
-		FBC0A8EB27A715EC3CD5CB4A967A9E32 /* UIViewController+DBRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3F6FC66CCF716FCFF0464CAF5C1B3E /* UIViewController+DBRouter.m */; };
+		F8C0E5FEF436C542D46C9884B7BDD549 /* UIViewController+DBRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0045567CD4D237458DD1E137B221D612 /* UIViewController+DBRouter.m */; };
+		F9D509654E2575D33E7FFDF97F05D4DE /* DBRouter.h in Headers */ = {isa = PBXBuildFile; fileRef = 68873873D086DCE6B2CA4B4985113E33 /* DBRouter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,63 +58,67 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0045567CD4D237458DD1E137B221D612 /* UIViewController+DBRouter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+DBRouter.m"; sourceTree = "<group>"; };
 		030716359482D1D694748B7376A4227F /* Pods-DBRouter_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-DBRouter_Example.modulemap"; sourceTree = "<group>"; };
-		0AA04F3CF83105F73B5D049BCB50E2F3 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
-		0FA4EB6F9FC5BA2ED6EA280C2950992F /* DBRouter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DBRouter.h; path = DBRouter/Classes/DBRouter.h; sourceTree = "<group>"; };
+		0B861B5F84543EC72755F3B907CB8796 /* UIApplication+DBRouter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+DBRouter.m"; sourceTree = "<group>"; };
+		0CF86F6496B9F038D3524BF3E62EE61B /* UIApplication+DBRouter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UIApplication+DBRouter.h"; sourceTree = "<group>"; };
+		101FEE8BDC5057213FFD6EF736519B21 /* NSString+DBRouter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NSString+DBRouter.h"; sourceTree = "<group>"; };
 		12B951BCE5CF5056325E16D9BD663332 /* Pods-DBRouter_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-DBRouter_Example-frameworks.sh"; sourceTree = "<group>"; };
+		1AF88A8997256215FE6EAD62E68741A6 /* DBRouter-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "DBRouter-prefix.pch"; sourceTree = "<group>"; };
 		1BC41A8D8A7D12DB57F8742626EE5B7A /* Pods-DBRouter_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-DBRouter_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		22E941F67274800FE065DBF3EA4DB715 /* DBRouterBaseModel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = DBRouterBaseModel.m; sourceTree = "<group>"; };
+		2824EC89ADFC818962D3EC6F9BECDE38 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		2A2B096F2586FB06D13906D02F9FD12D /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		2C33BE65F8F7559FE01B55617AFC1B29 /* NSDictionary+DBRouter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+DBRouter.h"; sourceTree = "<group>"; };
 		3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		33FE11D094F9A1E75EA76A80859A91CF /* Pods-DBRouter_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-DBRouter_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		350CBECD9E4D274B59CE7FD070426DEE /* Pods-DBRouter_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-DBRouter_Example-acknowledgements.plist"; sourceTree = "<group>"; };
-		39CC3C9CF00E05BA4C96A348A52E3280 /* NSString+DBRouter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NSString+DBRouter.m"; sourceTree = "<group>"; };
-		3A4C894FB31D7E5E63C3DD87529DFCFB /* NSArray+DBRouter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NSArray+DBRouter.h"; sourceTree = "<group>"; };
-		3AD343E7C608C56EDF9A89CC936A25C6 /* NSString+DBRouter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NSString+DBRouter.h"; sourceTree = "<group>"; };
 		3AE069F2801471801F897D780E8D7BF6 /* Pods-DBRouter_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-DBRouter_Tests-umbrella.h"; sourceTree = "<group>"; };
 		3AEDE2345CE1BB54B3FDFC2271427121 /* Pods-DBRouter_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-DBRouter_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
+		3E505771BA8040237044A1A41DB17E0B /* DBRouter.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = DBRouter.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		3F3E43714D358293BD2820BE316903DB /* DBRouter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = DBRouter.framework; path = DBRouter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3F999F91CB8BCD1161247CBAC4FAA0B8 /* DBRouter-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "DBRouter-prefix.pch"; sourceTree = "<group>"; };
+		3FE29965BC6AE608533DCDBDDC4CE059 /* DBRouterTool.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = DBRouterTool.m; sourceTree = "<group>"; };
 		4280AA250B642FFDB29E910035B64D54 /* Pods_DBRouter_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_DBRouter_Tests.framework; path = "Pods-DBRouter_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		45FDDEDE4E2CB35E8063A116AE020708 /* DBRouterModel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = DBRouterModel.h; sourceTree = "<group>"; };
-		464A3C3156C73D6291F707F89752F4A6 /* DBRouterTool.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = DBRouterTool.h; sourceTree = "<group>"; };
 		46AB2E0DF26DD39DCF52BCFF41617919 /* Pods-DBRouter_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-DBRouter_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		4B3893B0A097F87776DA750B268B7535 /* Pods_DBRouter_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_DBRouter_Example.framework; path = "Pods-DBRouter_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		535331A673188F867682872D860B8B7C /* DBRouterManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = DBRouterManager.h; sourceTree = "<group>"; };
-		5627ADF0088D8573003BC0DA86CCE437 /* DBRouterModel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = DBRouterModel.m; sourceTree = "<group>"; };
-		5AF171003EF52748995974115B4B022A /* DBRouter-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "DBRouter-umbrella.h"; sourceTree = "<group>"; };
+		4EA80A6541BF9B3FABA89B0314B29182 /* DBRouter.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = DBRouter.modulemap; sourceTree = "<group>"; };
+		5636D2BCC0C5086C540D8A4FF60C2110 /* DBRouter-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "DBRouter-dummy.m"; sourceTree = "<group>"; };
 		5F55B171C5A72D900B112BA705971C6D /* Pods-DBRouter_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-DBRouter_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		6309C64EAD98286A6E4F7AF744F39981 /* Pods-DBRouter_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-DBRouter_Tests-Info.plist"; sourceTree = "<group>"; };
-		686CE9BDD4131DC0129CDFC5C5641E84 /* DBRouterPrefixHeader.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DBRouterPrefixHeader.pch; path = DBRouter/Classes/DBRouterPrefixHeader.pch; sourceTree = "<group>"; };
-		68AF12E5C7EB3A3FCBEA99E9EF36BFF2 /* DBRouter.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = DBRouter.modulemap; sourceTree = "<group>"; };
-		69DF575612B744E2FA2B957BA3E259A2 /* DBRouter.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = DBRouter.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		6C9B8D05A7638A79114D054C9CAC8698 /* DBRouterManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = DBRouterManager.m; sourceTree = "<group>"; };
+		68873873D086DCE6B2CA4B4985113E33 /* DBRouter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DBRouter.h; path = DBRouter/Classes/DBRouter.h; sourceTree = "<group>"; };
+		72B6B2113532FA6F81DF7AA7D1FE9EEC /* NSObject+DBRouterMethodSwizzling.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NSObject+DBRouterMethodSwizzling.m"; sourceTree = "<group>"; };
+		76599940470B85D3436DA65A07EA7432 /* NSObject+DBRouterMethodSwizzling.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NSObject+DBRouterMethodSwizzling.h"; sourceTree = "<group>"; };
 		7EC1B075A0D7CBC513A4B33B7F81F407 /* Pods-DBRouter_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-DBRouter_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		92D572B371F0837E18D1E0A2B937B845 /* NSDictionary+DBRouter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+DBRouter.m"; sourceTree = "<group>"; };
-		95EF2904FEA668A44DC6944317464618 /* DBRouterBaseModel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = DBRouterBaseModel.h; sourceTree = "<group>"; };
-		98755D58E8CF70EB82EE602B1345CE8D /* UIViewController+DBRouter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UIViewController+DBRouter.h"; sourceTree = "<group>"; };
+		8D1472DD525C7B36725C512A8FE2F5F3 /* NSArray+DBRouter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NSArray+DBRouter.h"; sourceTree = "<group>"; };
+		94044E18D3140A4A88A22CC37DE47618 /* DBRouterBaseModel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = DBRouterBaseModel.m; sourceTree = "<group>"; };
+		98B966493C5B1BE14DBDCE18CDB5A4CC /* DBRouterTool.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = DBRouterTool.h; sourceTree = "<group>"; };
+		9A7DE84A1E78D5DBEC6D1C026863A8E5 /* DBRouterModel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = DBRouterModel.m; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		A00D4988C0896D91510CB1027E3E9B27 /* NSDictionary+DBRouter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+DBRouter.h"; sourceTree = "<group>"; };
+		9DA66A3692788249C8A165E68AA8E8FD /* DBRouterManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = DBRouterManager.m; sourceTree = "<group>"; };
 		A03D4FEB58D425F1A9769A1D2B6A6D70 /* Pods-DBRouter_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-DBRouter_Tests.modulemap"; sourceTree = "<group>"; };
+		A07E8439B6326F1A4B70B6195277DE9C /* DBRouterBaseModel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = DBRouterBaseModel.h; sourceTree = "<group>"; };
+		A178694A57D5A87DB5CB59E62D58D084 /* NSString+DBRouter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NSString+DBRouter.m"; sourceTree = "<group>"; };
+		A2A40A9751264BB6E956B8520A231A34 /* DBRouterPrefixHeader.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DBRouterPrefixHeader.pch; path = DBRouter/Classes/DBRouterPrefixHeader.pch; sourceTree = "<group>"; };
+		A2E86D690CC96E9C89D3AABC2AF7314D /* DBRouter-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "DBRouter-umbrella.h"; sourceTree = "<group>"; };
+		A426D8C82828795B03D31F63742D825A /* DBRouterModel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = DBRouterModel.h; sourceTree = "<group>"; };
+		A79F66540E0A80DC5511B3E1FAA34924 /* DBRouterManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = DBRouterManager.h; sourceTree = "<group>"; };
+		AD5FDCDF476D5306B78830B3DAB1AD6F /* UIViewController+DBRouter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UIViewController+DBRouter.h"; sourceTree = "<group>"; };
+		B8322DE8972B3902123410CB5502208C /* NSArray+DBRouter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NSArray+DBRouter.m"; sourceTree = "<group>"; };
 		BC415A15E88D1F3EB6A0B1C1F61BC874 /* Pods-DBRouter_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-DBRouter_Example.release.xcconfig"; sourceTree = "<group>"; };
-		C495CF4CD61942D8C8D7C653F7288998 /* NSArray+DBRouter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NSArray+DBRouter.m"; sourceTree = "<group>"; };
-		CB231BBB39D820913EACCD27AF55AB6E /* DBRouterTool.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = DBRouterTool.m; sourceTree = "<group>"; };
-		CE3F6FC66CCF716FCFF0464CAF5C1B3E /* UIViewController+DBRouter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+DBRouter.m"; sourceTree = "<group>"; };
+		BD4DC5B90A5083C93BD8CEFB65E44152 /* NSDictionary+DBRouter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+DBRouter.m"; sourceTree = "<group>"; };
 		D272809310C0883E63DA8674FD6CE631 /* Pods-DBRouter_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-DBRouter_Tests-dummy.m"; sourceTree = "<group>"; };
-		DBD0D4702C14A614C812E755A37D4287 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
-		E53B491CC1B5C9A084C0AE0D0A037282 /* DBRouter-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "DBRouter-Info.plist"; sourceTree = "<group>"; };
-		ED7DC8A76E0A63D344138130409DD433 /* DBRouter-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "DBRouter-dummy.m"; sourceTree = "<group>"; };
+		D496128CCAB5682A776B7D35E09607F0 /* DBRouter-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "DBRouter-Info.plist"; sourceTree = "<group>"; };
 		F3B104EBADB8422F568D3076F366F4A8 /* Pods-DBRouter_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-DBRouter_Example-umbrella.h"; sourceTree = "<group>"; };
+		F9DB154A379DCAE4820F2C96444C2E02 /* DBRouter.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = DBRouter.xcconfig; sourceTree = "<group>"; };
 		FA37DDC948FD6F3D0885C903136F2BF5 /* Pods-DBRouter_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-DBRouter_Example-Info.plist"; sourceTree = "<group>"; };
 		FDBF0FF8866AB4011C957D19D47889EE /* Pods-DBRouter_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-DBRouter_Example-dummy.m"; sourceTree = "<group>"; };
-		FF0F336A291E5810AD326963D6A35C01 /* DBRouter.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = DBRouter.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		BB2A3B172B1DAB97F9E8F037A299C19A /* Frameworks */ = {
+		57172D1E0F1BD7C6052A9D01861B5E30 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EE6188FB4BA5972C8D6D6383286444F9 /* Foundation.framework in Frameworks */,
+				451E479928044F54DF2DB90618581943 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -133,18 +141,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		04D3A5563E2B152FE2BCD9FAED992FD2 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				95EF2904FEA668A44DC6944317464618 /* DBRouterBaseModel.h */,
-				22E941F67274800FE065DBF3EA4DB715 /* DBRouterBaseModel.m */,
-				45FDDEDE4E2CB35E8063A116AE020708 /* DBRouterModel.h */,
-				5627ADF0088D8573003BC0DA86CCE437 /* DBRouterModel.m */,
-			);
-			name = Model;
-			path = DBRouter/Classes/Model;
-			sourceTree = "<group>";
-		};
 		080BD2FEE66D16F0A198F4DB544A9BE5 /* Pods-DBRouter_Example */ = {
 			isa = PBXGroup;
 			children = (
@@ -165,19 +161,9 @@
 		1EDC82503FF313852D1D822FC0E3B269 /* Development Pods */ = {
 			isa = PBXGroup;
 			children = (
-				5B9BF9226DC442B783A2B24BD0AF33CA /* DBRouter */,
+				EC53A72A56CE46BA16E333214B990063 /* DBRouter */,
 			);
 			name = "Development Pods";
-			sourceTree = "<group>";
-		};
-		276664359BD4EB3FFE7EA2BD521DF13E /* Pod */ = {
-			isa = PBXGroup;
-			children = (
-				69DF575612B744E2FA2B957BA3E259A2 /* DBRouter.podspec */,
-				DBD0D4702C14A614C812E755A37D4287 /* LICENSE */,
-				0AA04F3CF83105F73B5D049BCB50E2F3 /* README.md */,
-			);
-			name = Pod;
 			sourceTree = "<group>";
 		};
 		34AD68CD102FB99C460A54A776F6049D /* Targets Support Files */ = {
@@ -189,56 +175,44 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		3F6478F43A3B1A20C507ACFCD0E214A4 /* Tool */ = {
+		4E810A3448FFCBC687898B28F237174F /* Category */ = {
 			isa = PBXGroup;
 			children = (
-				464A3C3156C73D6291F707F89752F4A6 /* DBRouterTool.h */,
-				CB231BBB39D820913EACCD27AF55AB6E /* DBRouterTool.m */,
-			);
-			name = Tool;
-			path = DBRouter/Classes/Tool;
-			sourceTree = "<group>";
-		};
-		4AB5AC30258710DE27516BF808FAEE77 /* Manager */ = {
-			isa = PBXGroup;
-			children = (
-				535331A673188F867682872D860B8B7C /* DBRouterManager.h */,
-				6C9B8D05A7638A79114D054C9CAC8698 /* DBRouterManager.m */,
-			);
-			name = Manager;
-			path = DBRouter/Classes/Manager;
-			sourceTree = "<group>";
-		};
-		5B9BF9226DC442B783A2B24BD0AF33CA /* DBRouter */ = {
-			isa = PBXGroup;
-			children = (
-				0FA4EB6F9FC5BA2ED6EA280C2950992F /* DBRouter.h */,
-				686CE9BDD4131DC0129CDFC5C5641E84 /* DBRouterPrefixHeader.pch */,
-				7AFE96B12893A911485C30E30875FA2B /* Category */,
-				4AB5AC30258710DE27516BF808FAEE77 /* Manager */,
-				04D3A5563E2B152FE2BCD9FAED992FD2 /* Model */,
-				276664359BD4EB3FFE7EA2BD521DF13E /* Pod */,
-				FAED7D1F959E2CF402307F1DD91994E5 /* Support Files */,
-				3F6478F43A3B1A20C507ACFCD0E214A4 /* Tool */,
-			);
-			name = DBRouter;
-			path = ../..;
-			sourceTree = "<group>";
-		};
-		7AFE96B12893A911485C30E30875FA2B /* Category */ = {
-			isa = PBXGroup;
-			children = (
-				3A4C894FB31D7E5E63C3DD87529DFCFB /* NSArray+DBRouter.h */,
-				C495CF4CD61942D8C8D7C653F7288998 /* NSArray+DBRouter.m */,
-				A00D4988C0896D91510CB1027E3E9B27 /* NSDictionary+DBRouter.h */,
-				92D572B371F0837E18D1E0A2B937B845 /* NSDictionary+DBRouter.m */,
-				3AD343E7C608C56EDF9A89CC936A25C6 /* NSString+DBRouter.h */,
-				39CC3C9CF00E05BA4C96A348A52E3280 /* NSString+DBRouter.m */,
-				98755D58E8CF70EB82EE602B1345CE8D /* UIViewController+DBRouter.h */,
-				CE3F6FC66CCF716FCFF0464CAF5C1B3E /* UIViewController+DBRouter.m */,
+				8D1472DD525C7B36725C512A8FE2F5F3 /* NSArray+DBRouter.h */,
+				B8322DE8972B3902123410CB5502208C /* NSArray+DBRouter.m */,
+				2C33BE65F8F7559FE01B55617AFC1B29 /* NSDictionary+DBRouter.h */,
+				BD4DC5B90A5083C93BD8CEFB65E44152 /* NSDictionary+DBRouter.m */,
+				76599940470B85D3436DA65A07EA7432 /* NSObject+DBRouterMethodSwizzling.h */,
+				72B6B2113532FA6F81DF7AA7D1FE9EEC /* NSObject+DBRouterMethodSwizzling.m */,
+				101FEE8BDC5057213FFD6EF736519B21 /* NSString+DBRouter.h */,
+				A178694A57D5A87DB5CB59E62D58D084 /* NSString+DBRouter.m */,
+				0CF86F6496B9F038D3524BF3E62EE61B /* UIApplication+DBRouter.h */,
+				0B861B5F84543EC72755F3B907CB8796 /* UIApplication+DBRouter.m */,
+				AD5FDCDF476D5306B78830B3DAB1AD6F /* UIViewController+DBRouter.h */,
+				0045567CD4D237458DD1E137B221D612 /* UIViewController+DBRouter.m */,
 			);
 			name = Category;
 			path = DBRouter/Classes/Category;
+			sourceTree = "<group>";
+		};
+		5F68A4822D8242B5331B86F75F88910A /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				3E505771BA8040237044A1A41DB17E0B /* DBRouter.podspec */,
+				2A2B096F2586FB06D13906D02F9FD12D /* LICENSE */,
+				2824EC89ADFC818962D3EC6F9BECDE38 /* README.md */,
+			);
+			name = Pod;
+			sourceTree = "<group>";
+		};
+		63495443F92597AA5A9DF69EEFDE96AF /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				A79F66540E0A80DC5511B3E1FAA34924 /* DBRouterManager.h */,
+				9DA66A3692788249C8A165E68AA8E8FD /* DBRouterManager.m */,
+			);
+			name = Manager;
+			path = DBRouter/Classes/Manager;
 			sourceTree = "<group>";
 		};
 		A45474EA9FB4F6F1F269040A14285CA2 /* Products */ = {
@@ -251,12 +225,48 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		A79093C7375B2A5B3E0F8D746B13C631 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				4EA80A6541BF9B3FABA89B0314B29182 /* DBRouter.modulemap */,
+				F9DB154A379DCAE4820F2C96444C2E02 /* DBRouter.xcconfig */,
+				5636D2BCC0C5086C540D8A4FF60C2110 /* DBRouter-dummy.m */,
+				D496128CCAB5682A776B7D35E09607F0 /* DBRouter-Info.plist */,
+				1AF88A8997256215FE6EAD62E68741A6 /* DBRouter-prefix.pch */,
+				A2E86D690CC96E9C89D3AABC2AF7314D /* DBRouter-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/DBRouter";
+			sourceTree = "<group>";
+		};
 		C0834CEBB1379A84116EF29F93051C60 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
 				3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */,
 			);
 			name = iOS;
+			sourceTree = "<group>";
+		};
+		C50F89F12BD8609E29BC0C266FCB25C8 /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				98B966493C5B1BE14DBDCE18CDB5A4CC /* DBRouterTool.h */,
+				3FE29965BC6AE608533DCDBDDC4CE059 /* DBRouterTool.m */,
+			);
+			name = Tool;
+			path = DBRouter/Classes/Tool;
+			sourceTree = "<group>";
+		};
+		CD86BB9F318AE0EB4DDB3A95711F9A25 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A07E8439B6326F1A4B70B6195277DE9C /* DBRouterBaseModel.h */,
+				94044E18D3140A4A88A22CC37DE47618 /* DBRouterBaseModel.m */,
+				A426D8C82828795B03D31F63742D825A /* DBRouterModel.h */,
+				9A7DE84A1E78D5DBEC6D1C026863A8E5 /* DBRouterModel.m */,
+			);
+			name = Model;
+			path = DBRouter/Classes/Model;
 			sourceTree = "<group>";
 		};
 		CF1408CF629C7361332E53B88F7BD30C = {
@@ -294,18 +304,20 @@
 			path = "Target Support Files/Pods-DBRouter_Tests";
 			sourceTree = "<group>";
 		};
-		FAED7D1F959E2CF402307F1DD91994E5 /* Support Files */ = {
+		EC53A72A56CE46BA16E333214B990063 /* DBRouter */ = {
 			isa = PBXGroup;
 			children = (
-				68AF12E5C7EB3A3FCBEA99E9EF36BFF2 /* DBRouter.modulemap */,
-				FF0F336A291E5810AD326963D6A35C01 /* DBRouter.xcconfig */,
-				ED7DC8A76E0A63D344138130409DD433 /* DBRouter-dummy.m */,
-				E53B491CC1B5C9A084C0AE0D0A037282 /* DBRouter-Info.plist */,
-				3F999F91CB8BCD1161247CBAC4FAA0B8 /* DBRouter-prefix.pch */,
-				5AF171003EF52748995974115B4B022A /* DBRouter-umbrella.h */,
+				68873873D086DCE6B2CA4B4985113E33 /* DBRouter.h */,
+				A2A40A9751264BB6E956B8520A231A34 /* DBRouterPrefixHeader.pch */,
+				4E810A3448FFCBC687898B28F237174F /* Category */,
+				63495443F92597AA5A9DF69EEFDE96AF /* Manager */,
+				CD86BB9F318AE0EB4DDB3A95711F9A25 /* Model */,
+				5F68A4822D8242B5331B86F75F88910A /* Pod */,
+				A79093C7375B2A5B3E0F8D746B13C631 /* Support Files */,
+				C50F89F12BD8609E29BC0C266FCB25C8 /* Tool */,
 			);
-			name = "Support Files";
-			path = "Example/Pods/Target Support Files/DBRouter";
+			name = DBRouter;
+			path = ../..;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -319,20 +331,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E8E0D503557E22A77AED485FA8970D8E /* Headers */ = {
+		DB308CD93FFEB8FF0AE89A12E458E9D4 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A6A440312DC23518E5EA3C606A1B8EFE /* DBRouter-umbrella.h in Headers */,
-				1F3282141C3017DF1D3BCB768EDA3AD1 /* DBRouter.h in Headers */,
-				EF7571C49D3138394D406F263153AA8C /* DBRouterBaseModel.h in Headers */,
-				5CBD3F2C4E58B2014FF3F15C3767409F /* DBRouterManager.h in Headers */,
-				1B5B86F6E3D98B999C0D98EE6C492650 /* DBRouterModel.h in Headers */,
-				A8780DFAE1C407589D4C3384E0C64832 /* DBRouterTool.h in Headers */,
-				763CD924AD05D30FB97E7BF44CFDADF5 /* NSArray+DBRouter.h in Headers */,
-				D9FE29807A44C3428282610DD6061DEC /* NSDictionary+DBRouter.h in Headers */,
-				36EF02086AC2C4C418DDE40AC2D2D95C /* NSString+DBRouter.h in Headers */,
-				70C84DE2F326F1A8156CE25DAD512210 /* UIViewController+DBRouter.h in Headers */,
+				39A5441693D77EDC02D092D49187F40C /* DBRouter-umbrella.h in Headers */,
+				F9D509654E2575D33E7FFDF97F05D4DE /* DBRouter.h in Headers */,
+				BCAF7CAB31CD6542F8E81D05F0D3EE33 /* DBRouterBaseModel.h in Headers */,
+				EA74345E9A0BF076EE4A6DE1A2D32111 /* DBRouterManager.h in Headers */,
+				749706CB8B0017FD53CE22462C0B139D /* DBRouterModel.h in Headers */,
+				059D8FC2AA41AA8E45FAFD83C9CFC5ED /* DBRouterTool.h in Headers */,
+				722ADA1BDFE0254AC771B8CE8D00821F /* NSArray+DBRouter.h in Headers */,
+				613E9923D6054A78934990FC2DD37627 /* NSDictionary+DBRouter.h in Headers */,
+				01BDE168B2BABD9229A4C3BB85620E82 /* NSObject+DBRouterMethodSwizzling.h in Headers */,
+				C43D0A2244ED5EA074560D179198CAC7 /* NSString+DBRouter.h in Headers */,
+				5E4D65DA9D52D6AB2E466ACCE368331F /* UIApplication+DBRouter.h in Headers */,
+				0DC843215CFD6EDFACFA966542C35C5F /* UIViewController+DBRouter.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -368,12 +382,12 @@
 		};
 		AA616CB9DB23CA977DDC70FE8A8821D7 /* DBRouter */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BFF8124D6724752D4A34823E2695719D /* Build configuration list for PBXNativeTarget "DBRouter" */;
+			buildConfigurationList = 2AA20C3DB829E8B1B792AE3020879F3B /* Build configuration list for PBXNativeTarget "DBRouter" */;
 			buildPhases = (
-				E8E0D503557E22A77AED485FA8970D8E /* Headers */,
-				DEF850E2758E742A1865EA7AFB8D562E /* Sources */,
-				BB2A3B172B1DAB97F9E8F037A299C19A /* Frameworks */,
-				E822E7F066EF0A76E5BFC68EAD70646D /* Resources */,
+				DB308CD93FFEB8FF0AE89A12E458E9D4 /* Headers */,
+				3055706D5710AE5465477C8C891A4DA8 /* Sources */,
+				57172D1E0F1BD7C6052A9D01861B5E30 /* Frameworks */,
+				DED25BD81F99DE34421A051403A51997 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -446,7 +460,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E822E7F066EF0A76E5BFC68EAD70646D /* Resources */ = {
+		DED25BD81F99DE34421A051403A51997 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -464,28 +478,30 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3055706D5710AE5465477C8C891A4DA8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				29F9457BB51A15A8A577CF0FDA8AFE2A /* DBRouter-dummy.m in Sources */,
+				5108838557D92A5F18FDD8660F0D65C8 /* DBRouterBaseModel.m in Sources */,
+				B73C2E4C3888ABDE2A40597354187776 /* DBRouterManager.m in Sources */,
+				E29B082DA8A111032C140635A304A027 /* DBRouterModel.m in Sources */,
+				29F62ED9BD20C0180F0C15A266D2B9E1 /* DBRouterPrefixHeader.pch in Sources */,
+				ABA7C438A7C84500EDEE48157D92A975 /* DBRouterTool.m in Sources */,
+				9076F6526EC1FDBF56BAF0175F05C86E /* NSArray+DBRouter.m in Sources */,
+				F335CA65D3B82E204A1768B50E965811 /* NSDictionary+DBRouter.m in Sources */,
+				6B95F6276284A81BBA64DF3B01F87248 /* NSObject+DBRouterMethodSwizzling.m in Sources */,
+				A6484EFFBDF84DE95CAFFC39A6058071 /* NSString+DBRouter.m in Sources */,
+				ADC55EBA375F8DBF5543EE7155A22AAB /* UIApplication+DBRouter.m in Sources */,
+				F8C0E5FEF436C542D46C9884B7BDD549 /* UIViewController+DBRouter.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D948057C1C54C7F01BD2739DBAB2966E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				DC388DF39E8B4A995314CC97468C946A /* Pods-DBRouter_Example-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DEF850E2758E742A1865EA7AFB8D562E /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				074286BA0F6B744D0411E284E058CB16 /* DBRouter-dummy.m in Sources */,
-				10815BBB7FF5866E0FC2B21559212B01 /* DBRouterBaseModel.m in Sources */,
-				ED377E917A55FE2858E0F80BB2B7E3EF /* DBRouterManager.m in Sources */,
-				AD4C424BCC983FE964FAAF11F125288D /* DBRouterModel.m in Sources */,
-				400B8EB35696D454ADB4526978B9803D /* DBRouterPrefixHeader.pch in Sources */,
-				89417E5D9430F25558BC26ADA65EBDA5 /* DBRouterTool.m in Sources */,
-				2957A67E2EEEB667E552BEC3F33B64CC /* NSArray+DBRouter.m in Sources */,
-				C77A7E21110ECD463621BD82526CDCCE /* NSDictionary+DBRouter.m in Sources */,
-				9FF0B8D4624E23A8CDB45BBAC76C3C4A /* NSString+DBRouter.m in Sources */,
-				FBC0A8EB27A715EC3CD5CB4A967A9E32 /* UIViewController+DBRouter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -564,38 +580,6 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
-			};
-			name = Release;
-		};
-		5907E925479295994CF3F359C623B9B8 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = FF0F336A291E5810AD326963D6A35C01 /* DBRouter.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/DBRouter/DBRouter-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/DBRouter/DBRouter-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/DBRouter/DBRouter.modulemap";
-				PRODUCT_MODULE_NAME = DBRouter;
-				PRODUCT_NAME = DBRouter;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
@@ -763,37 +747,6 @@
 			};
 			name = Debug;
 		};
-		9FED94D2D21858F1484DF96D74C01169 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = FF0F336A291E5810AD326963D6A35C01 /* DBRouter.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/DBRouter/DBRouter-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/DBRouter/DBRouter-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/DBRouter/DBRouter.modulemap";
-				PRODUCT_MODULE_NAME = DBRouter;
-				PRODUCT_NAME = DBRouter;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
 		C8BDBB5FDAE1E2E4070091F7ABE8FD6E /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1BC41A8D8A7D12DB57F8742626EE5B7A /* Pods-DBRouter_Tests.release.xcconfig */;
@@ -828,6 +781,69 @@
 			};
 			name = Release;
 		};
+		CAFD6D91ACA2E72E936ADCA2FB36AA8B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F9DB154A379DCAE4820F2C96444C2E02 /* DBRouter.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/DBRouter/DBRouter-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/DBRouter/DBRouter-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/DBRouter/DBRouter.modulemap";
+				PRODUCT_MODULE_NAME = DBRouter;
+				PRODUCT_NAME = DBRouter;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		DDA67A7B10080438784B4CD176D0C6FF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F9DB154A379DCAE4820F2C96444C2E02 /* DBRouter.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/DBRouter/DBRouter-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/DBRouter/DBRouter-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/DBRouter/DBRouter.modulemap";
+				PRODUCT_MODULE_NAME = DBRouter;
+				PRODUCT_NAME = DBRouter;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -836,6 +852,15 @@
 			buildConfigurations = (
 				757E0361239DA0EE9049CA84BE1BED3E /* Debug */,
 				C8BDBB5FDAE1E2E4070091F7ABE8FD6E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2AA20C3DB829E8B1B792AE3020879F3B /* Build configuration list for PBXNativeTarget "DBRouter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DDA67A7B10080438784B4CD176D0C6FF /* Debug */,
+				CAFD6D91ACA2E72E936ADCA2FB36AA8B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -854,15 +879,6 @@
 			buildConfigurations = (
 				7EF7227D9B20A1D549000096ACCB23D7 /* Debug */,
 				4BE66A09A74FD25164AAB3C2645B9B93 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		BFF8124D6724752D4A34823E2695719D /* Build configuration list for PBXNativeTarget "DBRouter" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				9FED94D2D21858F1484DF96D74C01169 /* Debug */,
-				5907E925479295994CF3F359C623B9B8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

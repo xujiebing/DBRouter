@@ -12,7 +12,9 @@
 
 #import "NSArray+DBRouter.h"
 #import "NSDictionary+DBRouter.h"
+#import "NSObject+DBRouterMethodSwizzling.h"
 #import "NSString+DBRouter.h"
+#import "UIApplication+DBRouter.h"
 #import "UIViewController+DBRouter.h"
 #import "DBRouter.h"
 #import "DBRouterManager.h"

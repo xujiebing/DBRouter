@@ -464,10 +464,7 @@ static DBRouterManager *routerManager = nil;
                 return complete;
             }
             // FIXME:block主线程return问题
-            dispatch_sync(dispatch_get_main_queue(), ^{
-                [nv pushViewController:vc animated:YES];
-            });
-//            [nv pushViewController:vc animated:YES];
+            [nv pushViewController:vc animated:YES];
             complete = YES;
             return complete;
         } else {
