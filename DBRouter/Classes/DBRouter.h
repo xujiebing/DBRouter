@@ -8,5 +8,6 @@
 #ifndef DBRouter_h
 #define DBRouter_h
 
+#import <DBRouter/DBRouterManager.h>
 
 #endif /* DBRouter_h */

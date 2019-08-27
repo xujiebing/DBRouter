@@ -21,11 +21,25 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    __block NSInteger dd = 3;
-    dispatch_async(dispatch_get_main_queue(), ^{
-        dd = 99;
-    });
-    NSLog(@"");
+    self.title = @"page0";
+    UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(50, 100, 200, 60)];
+    [btn setBackgroundColor:[UIColor blueColor]];
+    [btn addTarget:self action:@selector(p_clickBtn) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:btn];
+    DBRouterManager.routerManager.setScheme(@[@"DB"]);
 }
+
+- (void)p_clickBtn {
+    DBRouterManager.routerManager.routerWithName(@"DBPage1");
+}
+
+- (void)dbSetParameter:(NSDictionary *)params {
+    
+}
+
+- (void)dbOnNextPopResult:(NSDictionary *)params {
+    
+}
+
 
 @end

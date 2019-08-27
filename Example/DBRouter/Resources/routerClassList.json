@@ -1,22 +1,32 @@
 {
-    "rn": [
+    "page3": [
         {
-            "url": "msx://m.bwton.com/rn?url=*&modulename=*&bundlename=*",
-            "iclass": "BWTRNContainerViewController",
+            "url": "DB://m.bwton.com/page3?jumptype=*",
+            "iclass": "DBViewController",
             "aclass": "com.bwton.metro.reactnative.business.BwtRNActivity"
         }
     ],
-    "find": [
+    "page2": [
         {
-            "url": "msx://m.bwton.com/find/findpage?jumptype=*",
-            "iclass": "FindPageViewController",
+            "url": "DB://m.bwton.com/page2/findpage?jumptype=*",
+            "iclass": "DBViewController1",
+            "aclass": "com.bwton.metro.find.FindFragment"
+        },
+        {
+            "url": "DB://m.bwton.com/page2/findpage1?jumptype=*",
+            "iclass": "DBViewController4",
             "aclass": "com.bwton.metro.find.FindFragment"
         }
     ],
-    "live": [
+    "page1": [
         {
-            "url": "msx://m.bwton.com/live/index",
-            "iclass": "BWTActivityViewController",
+            "url": "DB://m.bwton.com/page1/index",
+            "iclass": "DBViewController2",
+            "aclass": "com.bwton.metro.base.webview.BwtWebviewFragment"
+        },
+        {
+            "url": "DB://m.bwton.com/page1/index1",
+            "iclass": "DBViewController3",
             "aclass": "com.bwton.metro.base.webview.BwtWebviewFragment"
         }
     ],

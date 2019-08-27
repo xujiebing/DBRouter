@@ -24,7 +24,7 @@
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
 
 #ifdef DEBUG
-    #define DBRouterLog(fmt, ...) fprintf(stderr,"[DBRouter !!!!!!!!%s-->line:%d]\n %s \n %s\n",[[[NSString stringWithUTF8String:__FILE__] lastPathComponent] UTF8String], __LINE__, __PRETTY_FUNCTION__, [[NSString stringWithFormat:fmt, ##__VA_ARGS__] UTF8String]);
+    #define DBRouterLog(fmt, ...) fprintf(stderr,"[DBRouter %s  line:%d]\n %s \n %s\n",[[[NSString stringWithUTF8String:__FILE__] lastPathComponent] UTF8String], __LINE__, __PRETTY_FUNCTION__, [[NSString stringWithFormat:fmt, ##__VA_ARGS__] UTF8String]);
 #else
     #define DBRouterLog(...)
 #endif

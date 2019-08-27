@@ -25,7 +25,7 @@
                     openURL:(NSURL *)url
           sourceApplication:(NSString *)sourceApplication
                  annotation:(id)annotation {
-    DBRouterManager.routerManager routerUrl(url);
+    DBRouterManager.routerManager.routerUrl(url);
     return YES;
 }
 
@@ -33,7 +33,7 @@
 - (BOOL)dbRouterApplication:(UIApplication *)app
                     openURL:(NSURL *)url
                     options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
-    DBRouterManager.routerManager routerUrl(url);
+    DBRouterManager.routerManager.routerUrl(url);
     return YES;
 }
 

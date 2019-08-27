@@ -24,6 +24,10 @@
 		71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
 		9B8AB7E4230CE632007E2FE9 /* DBTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B8AB7E3230CE632007E2FE9 /* DBTest.m */; };
+		9BDF416F231535EC00DD877D /* DBViewController1.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BDF416E231535EC00DD877D /* DBViewController1.m */; };
+		9BDF4172231535FD00DD877D /* DBViewController2.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BDF4171231535FD00DD877D /* DBViewController2.m */; };
+		9BDF41752315360900DD877D /* DBViewController3.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BDF41742315360900DD877D /* DBViewController3.m */; };
+		9BDF41782315361600DD877D /* DBViewController4.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BDF41772315361600DD877D /* DBViewController4.m */; };
 		9BF048D323022E840097CC30 /* routerWhiteList.json in Resources */ = {isa = PBXBuildFile; fileRef = 9BF048CF23022E840097CC30 /* routerWhiteList.json */; };
 		9BF048D423022E840097CC30 /* routerClassList.json in Resources */ = {isa = PBXBuildFile; fileRef = 9BF048D023022E840097CC30 /* routerClassList.json */; };
 		9BF048D623022E840097CC30 /* routersNameList.json in Resources */ = {isa = PBXBuildFile; fileRef = 9BF048D223022E840097CC30 /* routersNameList.json */; };
@@ -67,6 +71,14 @@
 		850A62070671C8E065824180 /* DBRouter.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = DBRouter.podspec; path = ../DBRouter.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9B8AB7E3230CE632007E2FE9 /* DBTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DBTest.m; sourceTree = "<group>"; };
+		9BDF416D231535EC00DD877D /* DBViewController1.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DBViewController1.h; sourceTree = "<group>"; };
+		9BDF416E231535EC00DD877D /* DBViewController1.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DBViewController1.m; sourceTree = "<group>"; };
+		9BDF4170231535FD00DD877D /* DBViewController2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DBViewController2.h; sourceTree = "<group>"; };
+		9BDF4171231535FD00DD877D /* DBViewController2.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DBViewController2.m; sourceTree = "<group>"; };
+		9BDF41732315360900DD877D /* DBViewController3.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DBViewController3.h; sourceTree = "<group>"; };
+		9BDF41742315360900DD877D /* DBViewController3.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DBViewController3.m; sourceTree = "<group>"; };
+		9BDF41762315361600DD877D /* DBViewController4.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DBViewController4.h; sourceTree = "<group>"; };
+		9BDF41772315361600DD877D /* DBViewController4.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DBViewController4.m; sourceTree = "<group>"; };
 		9BF048CF23022E840097CC30 /* routerWhiteList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = routerWhiteList.json; sourceTree = "<group>"; };
 		9BF048D023022E840097CC30 /* routerClassList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = routerClassList.json; sourceTree = "<group>"; };
 		9BF048D223022E840097CC30 /* routersNameList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = routersNameList.json; sourceTree = "<group>"; };
@@ -157,6 +169,14 @@
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
 				6003F5A5195388D20070C39A /* DBViewController.h */,
 				6003F5A6195388D20070C39A /* DBViewController.m */,
+				9BDF416D231535EC00DD877D /* DBViewController1.h */,
+				9BDF416E231535EC00DD877D /* DBViewController1.m */,
+				9BDF4170231535FD00DD877D /* DBViewController2.h */,
+				9BDF4171231535FD00DD877D /* DBViewController2.m */,
+				9BDF41732315360900DD877D /* DBViewController3.h */,
+				9BDF41742315360900DD877D /* DBViewController3.m */,
+				9BDF41762315361600DD877D /* DBViewController4.h */,
+				9BDF41772315361600DD877D /* DBViewController4.m */,
 				71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				6003F594195388D20070C39A /* Supporting Files */,
@@ -391,7 +411,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9BDF41782315361600DD877D /* DBViewController4.m in Sources */,
+				9BDF41752315360900DD877D /* DBViewController3.m in Sources */,
+				9BDF416F231535EC00DD877D /* DBViewController1.m in Sources */,
 				6003F59E195388D20070C39A /* DBAppDelegate.m in Sources */,
+				9BDF4172231535FD00DD877D /* DBViewController2.m in Sources */,
 				6003F5A7195388D20070C39A /* DBViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
 			);

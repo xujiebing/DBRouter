@@ -22,8 +22,8 @@
     } else {
         viewController = vc;
     }
-    if (viewController.presentationController) {
-        viewController = viewController.presentationController;
+    if (viewController.presentedViewController) {
+        viewController = viewController.presentedViewController;
     }
     return viewController;
 }

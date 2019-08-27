@@ -135,6 +135,7 @@ static DBRouterManager *routerManager = nil;
         // 根据url转成routerModel
         DBRouterModel *routerModel = weakSelf.modelWithURL(url, params);
         if (!routerModel) {
+            DBRouterLog(@"routerModel为空")
             return NO;
         }
         // 校验参数是否合法
@@ -292,17 +293,21 @@ static DBRouterManager *routerManager = nil;
         NSURLComponents *components = [[NSURLComponents alloc] initWithString:url];
         NSString *scheme = components.scheme;
         if (NSString.dbIsEmpty(scheme)) {
+            DBRouterLog(@"【%@】scheme为空",url)
             return model;
         }
         if (![self.schemeArray containsObject:scheme]) {
+            DBRouterLog(@"【%@】scheme非法",url)
             return model;
         }
         NSString *host = components.host;
         if (NSString.dbIsEmpty(host)) {
+            DBRouterLog(@"【%@】host为空",url)
             return model;
         }
         NSString *path = components.path;
         if (NSString.dbIsEmpty(path)) {
+            DBRouterLog(@"【%@】path为空",url)
             return model;
         }
         NSArray *pathArray = [path componentsSeparatedByString:@"/"];
@@ -323,7 +328,7 @@ static DBRouterManager *routerManager = nil;
         
         [array enumerateObjectsUsingBlock:^(NSDictionary *item, NSUInteger idx, BOOL * _Nonnull stop) {
             DBRouterModel *tempModel = DBRouterModel.dbObjectWithKeyValues(item);
-            // 过滤过滤scheme和请求参数
+            // 过滤请求参数
             NSString *modelURL = DBRouterTool.filterUrlParams(tempModel.url);
             NSString *targetUrl = DBRouterTool.filterUrlParams(url);
             if([modelURL isEqualToString:targetUrl]) {
