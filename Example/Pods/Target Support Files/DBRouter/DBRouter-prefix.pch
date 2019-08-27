@@ -29,12 +29,21 @@
     #define DBRouterLog(...)
 #endif
 
-#define kWeakSelf __weak __typeof(self)weakSelf = self;
+#define kDBWeakSelf __weak __typeof(self)weakSelf = self;
+
+// 路由名与url对应关系文件
+static NSString *kDBRouterNameFileName = @"routers_name_list";
+// 本地类名路由配置文件
+static NSString *kDBRouterClassFileName = @"router_class_list";
+// 路由本地白名单数据
+static NSString *kDBRouterWhiteFileName = @"router_white_list";
 
 #import <DBRouter/DBRouterTool.h>
 #import <DBRouter/DBRouterModel.h>
 #import <DBRouter/NSDictionary+DBRouter.h>
 #import <DBRouter/NSString+DBRouter.h>
+#import <DBRouter/NSArray+DBRouter.h>
+#import <DBRouter/UIViewController+DBRouter.h>
 
 static NSString *kDBRouterJumpType = @"jumptype";
 

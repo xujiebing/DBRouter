@@ -7,22 +7,24 @@
 
 #import "DBRouterManager.h"
 
-#define DBRouter_TRY_BODY(__target) \
-@try {\
-{__target}\
-}\
-@catch (NSException *exception) {\
-NSLog(@"exception ===== %@", [exception description]);\
-}\
-@finally {\
-\
-}
-
 @interface DBRouterManager ()
 
-@property (nonatomic, strong, readwrite) NSDictionary *routerNameDic;
+- (DBRouterModel *(^)(NSString *url, NSDictionary *param))modelWithURL;
+- (BOOL (^)(DBRouterModel *))checkParams;
+- (BOOL (^)(DBRouterModel *_Nullable))router;
+- (UIViewController *(^)(DBRouterModel *))pageWithModel;
+- (BOOL (^)(DBRouterJumpType, UIViewController *))jumpPageWithViewController;
+- (NSString *(^)(NSString *))urlWithRouterName;
+- (void (^)(NSDictionary *))onNextPopResult;
 
-@property (nonatomic, strong, readwrite) NSDictionary *routerDic;
+@property (nonatomic, strong, readwrite) NSArray *schemeArray;
+@property (nonatomic, copy, readwrite) NSString *routerNameFilePath;
+@property (nonatomic, copy, readwrite) NSString *routerClassFilePath;
+@property (nonatomic, copy, readwrite) NSString *routerWhiteFilePath;
+@property (nonatomic, strong, readwrite) NSDictionary *routerNameDic;
+@property (nonatomic, strong, readwrite) NSDictionary *routerClassDic;
+@property (nonatomic, strong, readwrite) NSArray *routerWhiteArray;
+
 
 /**
  404页面
@@ -35,487 +37,528 @@ NSLog(@"exception ===== %@", [exception description]);\
 
 #pragma mark - 外部方法
 
-static DBRouterManager *sharedInstance = nil;
-
-+ (DBRouterManager *)shareInstance {
+static DBRouterManager *routerManager = nil;
++ (DBRouterManager *)routerManager {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        sharedInstance = [[super allocWithZone:NULL] init];
+        routerManager = [[super allocWithZone:NULL] init];
     });
-    return sharedInstance;
+    return routerManager;
 }
 
-- (void)setScheme:(NSArray *)array {
-    
+- (void (^)(NSArray * _Nonnull))setScheme {
+    kDBWeakSelf
+    void (^block)(NSArray *) = ^(NSArray *array) {
+        if (NSArray.dbIsEmpty(array)) {
+            return;
+        }
+        weakSelf.schemeArray = array;
+    };
+    return block;
 }
 
-- (void)routerWithURL:(NSString *)url
-               params:(NSDictionary *)params
-             complete:(DBRouterComplete)complete {
-    // 根据url转成routerModel
-    DBRouterModel *routerModel = [self p_modelWithURL:url];
-    NSDictionary *modelParams = routerModel.params;
-    
-    // 参数合并
-    if(params && [params isKindOfClass:[NSDictionary class]]) {
-        NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithDictionary:modelParams];
-        [dic addEntriesFromDictionary:params];
-        routerModel.params = dic;
-    }
-    
-    // 进行路由操作
-    [self p_routerWithModule:routerModel complete:complete];
+- (void (^)(NSString * _Nullable, NSString * _Nullable, NSString * _Nullable))setRouterFilePath {
+    kDBWeakSelf
+    void (^block)(NSString *, NSString *, NSString *) = ^(NSString *routerNameFilePath, NSString *routerClassFilePath, NSString *routerWhiteFilePath) {
+        if (!NSString.dbIsEmpty(routerNameFilePath)) {
+            weakSelf.routerNameFilePath = routerNameFilePath;
+        }
+        if (!NSString.dbIsEmpty(routerClassFilePath)) {
+            weakSelf.routerClassFilePath = routerClassFilePath;
+        }
+        if (NSString.dbIsEmpty(routerWhiteFilePath)) {
+            weakSelf.routerWhiteFilePath = routerWhiteFilePath;
+        }
+    };
+    return block;
 }
 
+- (void (^)(NSString * _Nullable, NSString * _Nullable, NSString * _Nullable))reloadRouterFilePath {
+    kDBWeakSelf
+    void (^block)(NSString *, NSString *, NSString *) = ^(NSString *routerNameFilePath, NSString *routerClassFilePath, NSString *routerWhiteFilePath) {
+        if (!NSString.dbIsEmpty(routerNameFilePath)) {
+            self->_routerNameDic = nil;
+            weakSelf.routerNameFilePath = routerNameFilePath;
+        }
+        if (!NSString.dbIsEmpty(routerClassFilePath)) {
+            self->_routerClassDic = nil;
+            weakSelf.routerClassFilePath = routerClassFilePath;
+        }
+        if (NSString.dbIsEmpty(routerWhiteFilePath)) {
+            self->_routerWhiteArray = nil;
+            weakSelf.routerWhiteFilePath = routerWhiteFilePath;
+        }
+    };
+    return block;
+}
 
+- (BOOL (^)(NSString * _Nonnull))routerWithName {
+    kDBWeakSelf
+    BOOL (^block)(NSString *) = ^(NSString *name) {
+        return weakSelf.routerWithNameAndParams(name, nil);
+    };
+    return block;
+}
 
-#pragma park - 内部方法
+- (BOOL (^)(NSString * _Nonnull, NSDictionary * _Nullable))routerWithNameAndParams {
+    kDBWeakSelf
+    BOOL (^block)(NSString *, NSDictionary *) = ^(NSString *name, NSDictionary *params) {
+        BOOL complete = NO;
+        if (NSString.dbIsEmpty(name)) {
+            DBRouterLog(@"路由名为空")
+            return complete;
+        }
+        NSString *url = weakSelf.urlWithRouterName(name);
+        if (NSString.dbIsEmpty(url)) {
+            DBRouterLog(@"路由名【%@】找不到url", name)
+            // FIXME:验证nil
+            complete = weakSelf.router(nil);
+            return complete;
+        }
+        complete = weakSelf.routerWithUrlAndParams(url, params);
+        return complete;
+    };
+    return block;
+}
+
+- (BOOL (^)(NSString * _Nonnull))routerWithUrl {
+    kDBWeakSelf
+    BOOL (^block)(NSString *) = ^(NSString *url) {
+        return weakSelf.routerWithUrlAndParams(url, nil);
+    };
+    return block;
+}
+
+- (BOOL (^)(NSString * _Nonnull, NSDictionary * _Nullable))routerWithUrlAndParams {
+    kDBWeakSelf
+    BOOL (^block)(NSString *, NSDictionary *) = ^(NSString *url, NSDictionary *params) {
+        // 根据url转成routerModel
+        DBRouterModel *routerModel = weakSelf.modelWithURL(url, params);
+        if (!routerModel) {
+            return NO;
+        }
+        // 校验参数是否合法
+        BOOL isValid = weakSelf.checkParams(routerModel);
+        if (!isValid) {
+            return NO;
+        }
+        // 进行路由操作
+        return weakSelf.router(routerModel);
+    };
+    return block;
+}
+
+- (BOOL (^)(NSURL * _Nonnull))routerUrl {
+    kDBWeakSelf
+    BOOL (^block)(NSURL *) = ^(NSURL *url){
+        BOOL complete = NO;
+        if (!url) {
+            return complete;
+        }
+        NSString *stringUrl = url.absoluteString;
+        NSURLComponents *components = [[NSURLComponents alloc] initWithString:stringUrl];
+        if (![weakSelf.schemeArray containsObject:components.scheme]) {
+            return complete;
+        }
+        __block BOOL isValid = NO;
+        NSString *targetUrl = DBRouterTool.filterUrlParams(stringUrl);
+        [weakSelf.routerWhiteArray enumerateObjectsUsingBlock:^(NSString *item, NSUInteger idx, BOOL * _Nonnull stop) {
+            NSString *tempUrl = DBRouterTool.filterUrlParams(item);
+            if ([targetUrl isEqualToString:tempUrl]) {
+                isValid = YES;
+                *stop = YES;
+            }
+        }];
+        if (!isValid) {
+            return complete;
+        }
+        complete = weakSelf.routerWithUrl(stringUrl);
+        return complete;
+    };
+    return block;
+}
+
+- (void (^)(UIViewController * _Nonnull))setNontFoundPage {
+    kDBWeakSelf
+    void (^block)(UIViewController *) = ^(UIViewController *vc){
+        weakSelf.notFoundViewController = vc;
+    };
+    return block;
+}
+
+- (void)popRouter {
+    self.popRouterWithResult(nil);
+}
+
+- (void (^)(NSDictionary * _Nullable))popRouterWithResult {
+    kDBWeakSelf
+    void (^block)(NSDictionary *) = ^(NSDictionary *params){
+        UIViewController *lastVC = UIViewController.lastViewController;
+        
+        if(lastVC.presentingViewController && lastVC.navigationController.viewControllers.count == 1) {
+            
+            [lastVC dismissViewControllerAnimated:YES completion:^{
+                weakSelf.onNextPopResult(params);
+            }];
+        } else {
+            // FIXME:block回调
+            [lastVC.navigationController popViewControllerAnimated:YES];
+            weakSelf.onNextPopResult(params);
+//            [lastVC.navigationController popViewControllerAnimated:YES complete:!params ? nil : ^(BOOL finished) {
+//                if (finished) {
+//                    kRACStrongSelf
+//                    [self p_tryLastPageResult:params];
+//                }
+//            }];
+        }
+    };
+    return block;
+}
+
+- (void (^)(NSInteger))popRouterWithIndex {
+    kDBWeakSelf
+    void (^block)(NSInteger) = ^(NSInteger index){
+        if (index <=0) {
+            return;
+        }
+        UIViewController *lastVC = UIViewController.lastViewController;
+        NSArray *vcArray = lastVC.navigationController.viewControllers;
+        if (vcArray.count <= 1) {
+            if(!lastVC.presentingViewController) {
+                return;
+            }
+            [lastVC dismissViewControllerAnimated:YES completion:nil];
+        }
+        if (index+1 >= vcArray.count) {
+            if(lastVC.presentingViewController) {
+                [lastVC dismissViewControllerAnimated:YES completion:^{
+                    weakSelf.popRouterWithIndex(index - vcArray.count);
+                }];
+                return;
+            }
+            [lastVC.navigationController popToRootViewControllerAnimated:YES];
+            return;
+        }
+        index = vcArray.count - index - 1;
+        id targetVC = NSArray.dbObjectAtIndex(vcArray, index);
+        if (!targetVC) {
+            return;
+        }
+        if (![targetVC isKindOfClass:[UIViewController class]]) {
+            return;
+        }
+        [lastVC.navigationController popToViewController:targetVC animated:YES];
+    };
+    return block;
+}
+
+- (void (^)(NSString * _Nonnull, BOOL))popRouterWithNameAndAnimated {
+    kDBWeakSelf
+    void (^block)(NSString *, BOOL) = ^(NSString *routerName, BOOL animated){
+        if (NSString.dbIsEmpty(routerName)) {
+            return ;
+        }
+        NSString *url = weakSelf.urlWithRouterName(routerName);
+        DBRouterModel *model = weakSelf.modelWithURL(url, nil);
+        UIViewController *targerVC = weakSelf.pageWithModel(model);
+        UIViewController *lastVC = UIViewController.lastViewController;
+        NSArray *vcArray = lastVC.navigationController.viewControllers;
+        for (UIViewController *itemVC in vcArray) {
+            NSString *targetVCName = DBRouterTool.className(targerVC);
+            NSString *itemVCName = DBRouterTool.className(itemVC);
+            if (![itemVCName isEqualToString:targetVCName]) {
+                continue;
+            }
+            [lastVC.navigationController popToViewController:itemVC animated:animated];
+        }
+    };
+    return block;
+}
+
+#pragma mark - 私有方法
 
 /**
  根据url获取router model
- 
- @param targetUrl 实际跳转的url
- @return router model
  */
-- (DBRouterModel *)p_modelWithURL:(NSString *)targetUrl {
-    
-    __block DBRouterModel *model = nil;
-    NSParameterAssert(targetUrl.length != 0);
-    if (NSString.dbIsEmpty(targetUrl)) {
-        DBRouterLog(@"url为空...");
-        return model;
-    }
-    
-    // 解析获取模块名，根据模块名获取对应的路由组，然后根据url获取到对应的class
-    NSURLComponents *components = [[NSURLComponents alloc] initWithString:targetUrl];
-    
-    if([components.scheme hasPrefix:@"http"]) {
-        return nil;
-    }
-    
-    BOOL isValid = [self p_checkURL:components];
-    if (!isValid) {
-        return nil;
-    }
-    
-    NSString *moduleName = [self p_moduleNameWithURLPath:components.path];
-    NSParameterAssert(moduleName && moduleName.length != 0);
-    
-    if(NSString.dbIsEmpty(moduleName)) {
-        DBRouterLog(@"[%@]模块名为空", targetUrl);
-        return model;
-    }
-    
-    NSDictionary *routers = self.routerDic;
-    if (!routers) {
-        DBRouterLog(@"路由配置文件为空, 请检查路由");
-        return model;
-    }
-    
-    NSArray *array = NSDictionary.dbObjectForKey(routers, moduleName);
-    if(!array || array.count == 0) {
-        DBRouterLog(@"获取 [%@] 下的对应路由配置信息为空", moduleName);
-        return model;
-    }
-    
-    kWeakSelf
-    [array enumerateObjectsUsingBlock:^(NSDictionary *item, NSUInteger idx, BOOL * _Nonnull stop) {
-        DBRouterModel *tempModel = [[DBRouterModel alloc] initWithDic:item];
-        tempModel.targetURLComponents = components;
-        
-        // 过滤过滤scheme和请求参数
-        NSString *modelURL = [weakSelf p_filterUrlParamsAndScheme:tempModel.url];
-        NSString *targetURL = [weakSelf p_filterUrlParamsAndScheme:targetUrl];
-        
-        if([modelURL isEqualToString:targetURL]) {
-            // 具体url需要通过外部传入
-            tempModel.targetURL = targetUrl;
-            model = tempModel;
-            
-            // 参数处理
-            NSDictionary *dic = [weakSelf p_handlerParams:components];
-            if(dic && dic.count > 0) {
-                tempModel.params = dic;
-            }
-            *stop = YES;
+- (DBRouterModel *(^)(NSString *url, NSDictionary *params))modelWithURL {
+    kDBWeakSelf
+    DBRouterModel *(^block)(NSString *, NSDictionary *) = ^(NSString *url, NSDictionary *params){
+        __block DBRouterModel *model = nil;
+        if (NSString.dbIsEmpty(url)) {
+            DBRouterLog(@"url为空...");
+            return model;
         }
-    }];
-    
-    return model;
-}
-
-/**
- url参数获取
- 
- @param components url转换后的对象
- @return 请求参数
- */
-- (NSDictionary *)p_handlerParams:(NSURLComponents *)components {
-    return [self.class getParamsByComponents:components];
-}
-
-
-+ (NSDictionary *)getParamsByComponents:(NSURLComponents *)components {
-    NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithCapacity:0];
-    if(!components) {
-        return dic;
-    }
-    
-    NSArray<NSURLQueryItem *> *items = components.queryItems;
-    
-    [items enumerateObjectsUsingBlock:^(NSURLQueryItem *item, NSUInteger idx, BOOL * _Nonnull stop) {
-        NSString *name = item.name;
-        NSString *value = item.value;
-        
-        // 过滤页面跳转类型
-        if([name isEqualToString:kDBRouterJumpType]) {
-            return;
+        // 解析获取模块名，根据模块名获取对应的路由组，然后根据url获取到对应的class
+        NSURLComponents *components = [[NSURLComponents alloc] initWithString:url];
+        NSString *scheme = components.scheme;
+        if (NSString.dbIsEmpty(scheme)) {
+            return model;
         }
-        NSMutableDictionary.dbSetObjectForKey(dic, name, value);
-    }];
-    
-    return dic;
-}
-
-
-/**
- 根据model进行路由跳转
- 
- @param model 路由实体类
- */
-- (void)p_routerWithModule:(DBRouterModel *_Nonnull)model
-                complete:(void(^_Nullable)(BOOL finished))block {
-    
-    // 校验参数是否合法
-    BOOL isValid = [self p_checkParamsWithModel:model];
-    if (!isValid) {
-        // FIXME:待处理
-//        [BWTSVProgressHUD showErrorWithStatus:@"哎呦, 服务器出了点差错"];
-        return;
-    }
-    
-    [self p_router:model complete:block];
-}
-
-
-/**
- 校验url是否合法
- 校验规则:
- 1、前缀必须msx开头
- 2、必须要有host(可考虑只支持m.bwton.com)
- 3、必须要有path
- 
- @param urlComponents 路由url
- @return YES-合法 NO-非法
- */
-- (BOOL)p_checkURL:(NSURLComponents *)urlComponents {
-    
-    // 非msx前缀开头不合法
-    if (![urlComponents.scheme hasPrefix:@"msx"]) {
-        DBRouterLog(@"前缀非msx开头, 非法路径");
-        return NO;
-    }
-    
-    if (!urlComponents.host || urlComponents.host.length == 0) {
-        DBRouterLog(@"没有host, 非法路径");
-        return NO;
-    }
-    
-    if (urlComponents.path.length == 0) {
-        DBRouterLog(@"没有一级、二级路径,非法路径");
-        return NO;
-    }
-    
-    return YES;
-}
-
-
-/**
- 过滤URL请求参数
- 
- @param url 当前URL
- @return 返回过滤掉参数的URL
- */
-- (NSString *)p_filterUrlParamsAndScheme:(NSString *)url {
-    if(!url || url.length == 0) {
-        return nil;
-    }
-    
-    // 过滤参数
-    NSArray *array = [url componentsSeparatedByString:@"?"];
-    NSString *targetURL = [array firstObject];
-    
-    // 过滤scheme码
-    NSURLComponents *urlComponents = [[NSURLComponents alloc] initWithString:targetURL];
-    NSString *scheme = urlComponents.scheme;
-    
-    NSRange range = [targetURL rangeOfString:scheme];
-    if (range.location == NSNotFound) {
-        return targetURL;
-    }
-    
-    NSInteger index = range.location + range.length + 3;    // 这里+3是把 :// 一起加上了
-    if (targetURL.length > index) {
-        targetURL = [targetURL substringFromIndex:index];
-    }
-    
-    return targetURL;
-}
-
-
-- (BOOL)p_checkParamsWithModel:(DBRouterModel *)model {
-    __block BOOL isValid = YES;
-    
-    // 如果model为空, 直接返回验证成功
-    if(!model) {
-        return isValid;
-    }
-    
-    // 分解路由url规则
-    NSString *url = model.url;
-    NSURLComponents *components = [[NSURLComponents alloc] initWithString:url];
-    NSArray *items = components.queryItems;
-    
-    [items enumerateObjectsUsingBlock:^(NSURLQueryItem *item, NSUInteger idx, BOOL * _Nonnull stop) {
-        NSString *name = item.name;
-        BOOL hasRequireParameter = [name hasPrefix:@"*"];
-        // 如果是必填参数, 则需要校验参数是否为*或者为空
-        if (hasRequireParameter) {
-            NSString *tempName = [name stringByReplacingOccurrencesOfString:@"*" withString:@""];
-            NSString *value = NSDictionary.dbObjectForKey(model.params, tempName);
-            
-            if (!value || value.length == 0 || [value isEqualToString:@"*"]) {
-                DBRouterLog(@"[%@]未必填参数, 不能为空或*", value);
-                isValid = NO;
+        if (![self.schemeArray containsObject:scheme]) {
+            return model;
+        }
+        NSString *host = components.host;
+        if (NSString.dbIsEmpty(host)) {
+            return model;
+        }
+        NSString *path = components.path;
+        if (NSString.dbIsEmpty(path)) {
+            return model;
+        }
+        NSArray *pathArray = [path componentsSeparatedByString:@"/"];
+        NSString *moduleName = NSArray.dbObjectAtIndex(pathArray, 1);
+        if(NSString.dbIsEmpty(moduleName)) {
+            DBRouterLog(@"[%@]模块名为空", url);
+            return model;
+        }
+        if (!weakSelf.routerClassDic) {
+            DBRouterLog(@"路由配置文件为空, 请检查路由");
+            return model;
+        }
+        NSArray *array = NSDictionary.dbObjectForKey(weakSelf.routerClassDic, moduleName);
+        if (NSArray.dbIsEmpty(array)) {
+            DBRouterLog(@"获取 [%@] 下的对应路由配置信息为空", moduleName);
+            return model;
+        }
+        
+        [array enumerateObjectsUsingBlock:^(NSDictionary *item, NSUInteger idx, BOOL * _Nonnull stop) {
+            DBRouterModel *tempModel = DBRouterModel.dbObjectWithKeyValues(item);
+            // 过滤过滤scheme和请求参数
+            NSString *modelURL = DBRouterTool.filterUrlParams(tempModel.url);
+            NSString *targetUrl = DBRouterTool.filterUrlParams(url);
+            if([modelURL isEqualToString:targetUrl]) {
+                tempModel.addParameters(url, params);
+                model = tempModel;
                 *stop = YES;
             }
-        }
-    }];
-    
-    return isValid;
+        }];
+        return model;
+    };
+    return block;
 }
 
-
-/**
- 内部进行路由跳转
- 
- @param model 路由实体类
- */
-- (void)p_router:(DBRouterModel *)model complete:(void (^)(BOOL))block {
-    
-    if ([model.targetURLComponents.path isEqualToString:@"/tab"]) {
-        NSUInteger index = 0;
-        if (model.params) {
-            NSString *indexNum = NSDictionary.dbObjectForKey(model.params, @"index");
-            if (indexNum) {
-                index = [indexNum integerValue];
-            }
+- (BOOL (^)(DBRouterModel *))checkParams {
+    __block BOOL isValid = YES;
+    BOOL (^block)(DBRouterModel *) = ^(DBRouterModel *model) {
+        if (!model) {
+            isValid = NO;
+            return isValid;
         }
-        [self bwt_switchTab:index];
-        return;
-    }
-    
-    // 1. 得到vc类
-    UIViewController *vc = [self bwt_pageWithModule:model];
-    
-    // 1.1 跳转原生浏览器
-    if (!vc) {
-        if ([model.url hasPrefix:@"http"]) {
-            [self toBroswer:model.url];
-        } else {
-            DBRouterLog(@"当前vc为空, 是否未集成当前vc所在的模块?")
-        }
-        return;
-    }
-    
-    // 2. 进行跳转
-    [self bwt_jumpPage:model.jumpType viewController:vc complete:block];
-}
-
-/**
- 跳转至safari
- 
- @param urlStr url地址
- */
-- (void)toBroswer:(NSString *)urlStr {
-    // FIXME:待开发
-//    [BWTTools openUrlInThirdParty:urlStr];
-}
-
-
-/**
- 跳转到指定页面
- 
- @param type 跳转类型
- @param vc ViewController
- */
-- (void)bwt_jumpPage:(DBRouterJumpType)type
-      viewController:(UIViewController *)vc
-            complete:(void (^)(BOOL))block {
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-        
-        // FIXME:待修改
-//        UIViewController *lastViewController = [UIViewController lastViewController];
-        UIViewController *lastViewController = nil;
-        // 模态
-        if (type == DBRouterPresent) {
-            Class class = NSClassFromString(@"BWTRootNavigationController");
-            if (!class) {
-                DBRouterLog(@"初始化BWTRootNavigationController失败");
-                return;
-            }
-            
-            UINavigationController *nav = [[class alloc] initWithRootViewController:vc];
-            [lastViewController presentViewController:nav animated:YES completion:^{
-                if (block) {
-                    block(YES);
+        // 分解路由url规则
+        NSString *url = model.url;
+        NSURLComponents *components = [[NSURLComponents alloc] initWithString:url];
+        NSArray *items = components.queryItems;
+        [items enumerateObjectsUsingBlock:^(NSURLQueryItem *item, NSUInteger idx, BOOL * _Nonnull stop) {
+            NSString *name = item.name;
+            BOOL hasRequireParameter = [name hasPrefix:@"*"];
+            // 如果是必填参数, 则需要校验参数是否为*或者为空
+            if (hasRequireParameter) {
+                NSString *tempName = [name stringByReplacingOccurrencesOfString:@"*" withString:@""];
+                NSString *value = NSDictionary.dbObjectForKey(model.params, tempName);
+                if (NSString.dbIsEmpty(value)) {
+                    DBRouterLog(@"[%@]为必填参数, 不能为空", tempName);
+                    isValid = NO;
+                    *stop = YES;
                 }
-            }];
-            return;
-        } else if (type == DBRouterPush) { // 普通push
-            UINavigationController *nv = lastViewController.navigationController;
-            if (!nv) {
-                DBRouterLog(@"push到%@页时,调用页面必须要有导航栏", vc);
-                return;
+                if ([value isEqualToString:@"*"]) {
+                    DBRouterLog(@"[%@]为必填参数, 不能为*", tempName);
+                    isValid = NO;
+                    *stop = YES;
+                }
             }
-            
-            id nvc = nv.navigationController;
-            [nv pushViewController:vc animated:YES];
-            return;
-        } else { // 自定义动画push
-            UINavigationController *nv = lastViewController.navigationController;
-            if (!nv) {
-                DBRouterLog(@"push到%@页时,调用页面必须要有导航栏", vc);
-                return;
-            }
-            id nvc = nv.navigationController;
-            // FIXME:待修改
-//            UIImageView *lastView = [[UIImageView alloc] initWithImage:[self p_snapshotSingleView:nv.view]];
-//            NSString *animationType = [self.animationArr objectOrNilAtIndex:type];
-//            [nvc pushViewController:vc animated:NO complete:^(BOOL finished) {
-//                UIViewController *targetVC = [UIViewController lastViewController];
-//                [targetVC.navigationController.view addSubview:lastView];
-//                dispatch_async(dispatch_get_main_queue(), ^{
-//                    [BWTAnimationTools transitionWithType:animationType subtype:kCATransitionFromRight duration:0.3 forView:targetVC.navigationController.view];
-//                    [lastView removeFromSuperview];
-//                });
-//            }];
-            return;
-        }
-    });
-    
+        }];
+        return isValid;
+    };
+    return block;
 }
 
 /**
  获取页面控制器
- 
- @param model 路由实体类
- @return 页面控制器
  */
-- (UIViewController *)bwt_pageWithModule:(DBRouterModel *)model {
-    
-    UIViewController *vc = nil;
-    
-    // 1. 为空处理
-    if (NSString.dbIsEmpty(model.url)) {
-        DBRouterLog(@"路由实体类或者URL为空");
-        return self.notFoundViewController;
-    }
-    
-    // 2. 判断原生类是否已集成
-    NSString *className = model.className;
-    Class class = NSClassFromString(className);
-    if (!class) {
-        DBRouterLog(@"找不到[%@]需要跳转的原生类, 请检查是否有集成对应的模块", className);
-        return nil;
-    }
-    
-    // 3.根据请求参数判断是否有url进行不同页面处理
-    NSString *url = NSDictionary.dbObjectForKey(model.params, @"url");
-    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:model.params];
-    if (url) {
-        NSString *targetURL = [DBRouterTool URLDecodedString:url];
-        NSMutableDictionary.dbSetObjectForKey(params, @"url", targetURL);
-    }
-    
-    vc = [[class alloc] init];
-    
-    SEL sel = NSSelectorFromString(@"setParameter:");
-    BOOL isConforms = [vc respondsToSelector:sel];
-    
-    if (params.count && isConforms) {
+- (UIViewController *(^)(DBRouterModel *))pageWithModel {
+    kDBWeakSelf
+    UIViewController *(^block)(DBRouterModel *) = ^(DBRouterModel *model) {
+        UIViewController *vc = nil;
+        if (!model) {
+            return vc;
+        }
+        if (NSString.dbIsEmpty(model.url)) {
+            DBRouterLog(@"路由实体类或者URL为空");
+            return weakSelf.notFoundViewController;
+        }
+        NSString *className = model.iclass;
+        Class class = NSClassFromString(className);
+        if (!class) {
+            DBRouterLog(@"找不到[%@]需要跳转的原生类, 请检查是否有集成对应的模块", className);
+            return vc;
+        }
+        if (!NSDictionary.dbIsEmpty(model.params)) {
+            return vc;
+        }
+        NSString *url = NSDictionary.dbObjectForKey(model.params, @"url");
+        NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:model.params];
+        if (url) {
+            NSString *targetURL = NSString.dbUrlDecodeString(url);
+            NSMutableDictionary.dbSetObjectForKey(params, @"url", targetURL);
+        }
+        vc = [[class alloc] init];
         
+        SEL selector = NSSelectorFromString(@"dbSetParameter:");
+        if (selector && [vc respondsToSelector:@selector(selector)]) {
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-        
-        DBRouter_TRY_BODY([vc performSelector:sel withObject:params];)
+            [vc performSelector:selector withObject:model.params];
 #pragma clang diagnostic pop
-    }
-    
-    //
-    //    Protocol *protocol = NSProtocolFromString(@"BWTRACBaseViewProtocol");
-    //    BOOL isConforms = [vc conformsToProtocol:protocol];
-    //    if(isConforms && params.count) {
-    //        SEL sel = NSSelectorFromString(@"setParameter:");
-    //#pragma clang diagnostic push
-    //#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-    //        BWT_TRY_BODY([vc performSelector:sel withObject:params];)
-    //#pragma clang diagnostic pop
-    //    }
-    
-    return vc;
-}
-
-
-
-/**
- 切换tab
- 
- @param index 切换到第几个tab
- */
-- (void)bwt_switchTab:(NSUInteger)index {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        // FIXME:待开发
-//        UIViewController *lastViewController = [UIViewController lastViewController];
-        UIViewController *lastViewController = nil;
-        UITabBarController *tabBar = lastViewController.tabBarController;
-        
-        if (index >= tabBar.childViewControllers.count) {
-            return;
         }
-        // FIXME:待开发
-//        [lastViewController.navigationController popViewControllerAnimated:YES complete:^(BOOL finished) {
-//            lastViewController.tabBarController.selectedIndex = index;
-//        }];
-    });
+        return vc;
+    };
+    return block;
 }
 
 /**
- 根据url path 获取一级目录, 也就是模块名
- 
- @param path url path
- @return 模块名
+ 进行路由跳转
  */
-- (NSString *)p_moduleNameWithURLPath:(NSString *)path {
-    
-    NSString *moduleName = nil;
-    if (NSString.dbIsEmpty(path)) {
-        DBRouterLog(@"url路径为空");
-        return moduleName;
-    }
-    
-    NSArray *pathArray = [path componentsSeparatedByString:@"/"];
-    if(pathArray.count > 1) {
-        // FIXME:待开发
-//        moduleName = [pathArray objectOrNilAtIndex:1];
-    }
-    
-    return moduleName;
+- (BOOL (^)(DBRouterModel *_Nullable))router {
+    kDBWeakSelf
+    BOOL (^block)(DBRouterModel *) = ^(DBRouterModel *model) {
+        BOOL complete = NO;
+        // 跳转safari
+        if ([model.urlComponents.scheme isEqualToString:@"http"] || [model.urlComponents.scheme isEqualToString:@"https"]) {
+            complete = DBRouterTool.openUrlInSafari(model.url);
+            return complete;
+        }
+        // tab切换
+        if ([model.urlComponents.path isEqualToString:@"/tab"]) {
+            NSUInteger index = 0;
+            NSString *indexNum = NSDictionary.dbObjectForKey(model.params, @"index");
+            if (indexNum) {
+                index = [indexNum integerValue];
+            }
+            complete = DBRouterTool.switchTabbarIndex(index);
+            return complete;
+        }
+        // 页面跳转
+        UIViewController *vc = weakSelf.pageWithModel(model);
+        if (!vc) {
+            DBRouterLog(@"当前vc为空, 是否未集成当前vc所在的模块?")
+            return complete;
+        }
+        complete = weakSelf.jumpPageWithViewController(model.jumpType, vc);
+        return complete;
+    };
+    return block;
 }
 
+/**
+ 跳转到指定页面
+ */
+- (BOOL (^)(DBRouterJumpType, UIViewController *))jumpPageWithViewController {
+    BOOL (^block)(DBRouterJumpType, UIViewController *) = ^(DBRouterJumpType type, UIViewController *vc) {
+        __block BOOL complete = NO;
+        UIViewController *lastViewController = UIViewController.lastViewController;
+        if (type == DBRouterPush) {
+            // push
+            UINavigationController *nv = lastViewController.navigationController;
+            if (!nv) {
+                DBRouterLog(@"push到%@页时,调用页面必须要有导航栏", vc);
+                return complete;
+            }
+            // FIXME:block主线程return问题
+            dispatch_sync(dispatch_get_main_queue(), ^{
+                [nv pushViewController:vc animated:YES];
+            });
+//            [nv pushViewController:vc animated:YES];
+            complete = YES;
+            return complete;
+        } else {
+            // 模态
+            UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
+            // FIXME:block主线程return问题
+            dispatch_semaphore_t sema = dispatch_semaphore_create(0);
+            [lastViewController presentViewController:nav animated:YES completion:^{
+                complete = YES;
+                dispatch_semaphore_signal(sema);
+            }];
+            dispatch_semaphore_wait(sema, DISPATCH_TIME_FOREVER);
+            return complete;
+        }
+    };
+    return block;
+}
+
+/**
+ 根据路由名去映射文件中获取url
+ */
+- (NSString *(^)(NSString *))urlWithRouterName {
+    kDBWeakSelf
+    NSString *(^block)(NSString *) = ^(NSString *routerName) {
+        NSString *url = nil;
+        if (NSDictionary.dbIsEmpty(weakSelf.routerNameDic)) {
+            DBRouterLog(@"路由配置文件异常 %@", kDBRouterNameFileName)
+            return url;
+        }
+        url = NSDictionary.dbObjectForKey(weakSelf.routerNameDic, routerName);
+        return url;
+    };
+    return block;
+}
+
+- (void (^)(NSDictionary *))onNextPopResult {
+    void (^block)(NSDictionary *) = ^(NSDictionary *params){
+        if (NSDictionary.dbIsEmpty(params)) {
+            return ;
+        }
+        UIViewController *lastVC = UIViewController.lastViewController;
+        SEL sel = NSSelectorFromString(@"dbOnNextPopResult:");
+        if ([lastVC respondsToSelector:sel]) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+        [lastVC performSelector:sel withObject:params];
+#pragma clang diagnostic pop
+        }
+    };
+    return block;
+}
 
 #pragma park - 懒加载方法
 
+- (NSDictionary *)routerNameDic {
+    if (!_routerNameDic) {
+        if (NSString.dbIsEmpty(self.routerNameFilePath)) {
+            self.routerNameFilePath = DBRouterTool.fullPathWithFileName(kDBRouterNameFileName);
+        }
+        _routerNameDic = DBRouterTool.loadJSONFileWithPath(self.routerNameFilePath);
+        if(NSDictionary.dbIsEmpty(_routerNameDic)) {
+            DBRouterLog(@"尚未配置[%@.json]文件, 或此文件格式不正确", kDBRouterNameFileName);
+        }
+    }
+    return _routerNameDic;
+}
+
+- (NSDictionary *)routerClassDic {
+    if (!_routerClassDic) {
+        if (NSString.dbIsEmpty(self.routerClassFilePath)) {
+            self.routerClassFilePath = DBRouterTool.fullPathWithFileName(kDBRouterClassFileName);
+        }
+        _routerClassDic = DBRouterTool.loadJSONFileWithPath(self.routerClassFilePath);
+        if(NSDictionary.dbIsEmpty(_routerClassDic)) {
+            DBRouterLog(@"尚未配置[%@.json]文件, 或此文件格式不正确", kDBRouterClassFileName);
+        }
+    }
+    return _routerClassDic;
+}
+
+- (NSArray *)routerWhiteArray {
+    if (!_routerWhiteArray) {
+        if (NSString.dbIsEmpty(self.routerWhiteFilePath)) {
+            self.routerWhiteFilePath = DBRouterTool.fullPathWithFileName(kDBRouterWhiteFileName);
+        }
+        _routerWhiteArray = DBRouterTool.loadJSONFileWithPath(self.routerWhiteFilePath);
+        if(NSArray.dbIsEmpty(_routerWhiteArray)) {
+            DBRouterLog(@"尚未配置[%@.json]文件, 或此文件格式不正确", kDBRouterWhiteFileName);
+        }
+    }
+    return _routerWhiteArray;
+}
 
 @end

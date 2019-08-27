@@ -6,6 +6,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "DBRouterBaseModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -21,39 +22,42 @@ typedef enum : NSUInteger {
     DBFlipFromRight = 9//右翻转
 } DBRouterJumpType;
 
-@interface DBRouterModel : NSObject
+@interface DBRouterModel : DBRouterBaseModel
 
 /**
- 路由url规则, schema DB-原生跳转 http-外部浏览器
+ 设置model参数
  */
-@property (nonatomic, copy) NSString * _Nonnull url;
+- (DBRouterModel *(^)(NSString *url, NSDictionary *params))addParameters;
 
 /**
- 实际跳转的URL
+ 路由url
  */
-@property (nonatomic, copy) NSString * _Nonnull targetURL;
+@property (nonatomic, copy, readonly) NSString * _Nonnull url;
 
 /**
- URL转换后的对象
+ url转换后的对象
  */
-@property (nonatomic, strong) NSURLComponents *_Nonnull targetURLComponents;
+@property (nonatomic, strong, readonly) NSURLComponents *_Nonnull urlComponents;
 
 /**
- 控制器类名
+ 页面名称
  */
-@property (nonatomic, copy) NSString * _Nullable className;
+@property (nonatomic, copy, readonly) NSString * _Nonnull iclass;
 
 /**
  跳转到原生的参数
  */
-@property (nonatomic, strong) NSDictionary * _Nullable params;
+@property (nonatomic, strong, readonly) NSDictionary * _Nullable params;
 
 /**
  跳转方式：1-push 2-present
  */
-@property (nonatomic, assign) DBRouterJumpType jumpType;
+@property (nonatomic, assign, readonly) DBRouterJumpType jumpType;
 
-- (instancetype _Nullable)initWithDic:(NSDictionary *_Nonnull)dic;
+/**
+ 实际跳转的url,不带scheme
+ */
+@property (nonatomic, copy, readonly) NSString * _Nonnull targetURL;
 
 @end
 

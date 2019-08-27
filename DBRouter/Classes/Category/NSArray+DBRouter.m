@@ -22,6 +22,20 @@
     return block;
 }
 
++ (id  _Nonnull (^)(NSArray * _Nonnull, NSUInteger))dbObjectAtIndex {
+    id (^block)(NSArray *, NSUInteger) = ^(NSArray *array, NSUInteger index) {
+        id obj = nil;
+        if (NSArray.dbIsEmpty(array)) {
+            return obj;
+        }
+        if (index < array.count) {
+            obj = [array objectAtIndex:index];
+        }
+        return obj;
+    };
+    return block;
+}
+
 @end
 
 @implementation NSMutableArray (DBRouter)
@@ -35,6 +49,19 @@
             return YES;
         }
         return NO;
+    };
+    return block;
+}
+
++ (void (^)(NSMutableArray * _Nonnull, id _Nonnull))dbAddObject {
+    void (^block)(NSMutableArray *, id) = ^(NSMutableArray *array, id object) {
+        if (NSMutableArray.dbIsEmpty(array)) {
+            return ;
+        }
+        if (!object) {
+            return;
+        }
+        [array addObject:object];
     };
     return block;
 }

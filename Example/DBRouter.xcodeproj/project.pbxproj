@@ -26,7 +26,6 @@
 		9B8AB7E4230CE632007E2FE9 /* DBTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B8AB7E3230CE632007E2FE9 /* DBTest.m */; };
 		9BF048D323022E840097CC30 /* router_white_list.json in Resources */ = {isa = PBXBuildFile; fileRef = 9BF048CF23022E840097CC30 /* router_white_list.json */; };
 		9BF048D423022E840097CC30 /* router_class_list.json in Resources */ = {isa = PBXBuildFile; fileRef = 9BF048D023022E840097CC30 /* router_class_list.json */; };
-		9BF048D523022E840097CC30 /* domain_white_list.json in Resources */ = {isa = PBXBuildFile; fileRef = 9BF048D123022E840097CC30 /* domain_white_list.json */; };
 		9BF048D623022E840097CC30 /* routers_name_list.json in Resources */ = {isa = PBXBuildFile; fileRef = 9BF048D223022E840097CC30 /* routers_name_list.json */; };
 		9F10BB00E94DED3CB1EF7552 /* Pods_DBRouter_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D24B3C226650012B876189E /* Pods_DBRouter_Example.framework */; };
 /* End PBXBuildFile section */
@@ -71,7 +70,6 @@
 		9B8AB7E3230CE632007E2FE9 /* DBTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DBTest.m; sourceTree = "<group>"; };
 		9BF048CF23022E840097CC30 /* router_white_list.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = router_white_list.json; sourceTree = "<group>"; };
 		9BF048D023022E840097CC30 /* router_class_list.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = router_class_list.json; sourceTree = "<group>"; };
-		9BF048D123022E840097CC30 /* domain_white_list.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = domain_white_list.json; sourceTree = "<group>"; };
 		9BF048D223022E840097CC30 /* routers_name_list.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = routers_name_list.json; sourceTree = "<group>"; };
 		C5FF4A8C7C89797402A64D16 /* Pods-DBRouter_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DBRouter_Tests.debug.xcconfig"; path = "Target Support Files/Pods-DBRouter_Tests/Pods-DBRouter_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		D7A4E30F01E684C233601B5E /* Pods-DBRouter_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DBRouter_Example.debug.xcconfig"; path = "Target Support Files/Pods-DBRouter_Example/Pods-DBRouter_Example.debug.xcconfig"; sourceTree = "<group>"; };
@@ -213,7 +211,6 @@
 			children = (
 				9BF048CF23022E840097CC30 /* router_white_list.json */,
 				9BF048D023022E840097CC30 /* router_class_list.json */,
-				9BF048D123022E840097CC30 /* domain_white_list.json */,
 				9BF048D223022E840097CC30 /* routers_name_list.json */,
 			);
 			path = Resources;
@@ -308,7 +305,6 @@
 				71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
 				9BF048D423022E840097CC30 /* router_class_list.json in Resources */,
-				9BF048D523022E840097CC30 /* domain_white_list.json in Resources */,
 				9BF048D623022E840097CC30 /* routers_name_list.json in Resources */,
 				9BF048D323022E840097CC30 /* router_white_list.json in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,

@@ -16,6 +16,16 @@ NS_ASSUME_NONNULL_BEGIN
  */
 + (BOOL (^)(NSString *))dbIsEmpty;
 
+/**
+ url编码
+ */
++ (NSString * (^)(NSString *))dbUrlDecodeString;
+
+/**
+ 字符串转对象
+ */
++ (id (^)(NSString *))dbJsonObject;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -7,12 +7,13 @@
 //
 
 #import "DBViewController.h"
+#import "DBRouterManager.h"
 #import "NSDictionary+DBRouter.h"
 #import "NSString+DBRouter.h"
 #import "NSArray+DBRouter.h"
+#import "DBRouterModel.h"
 
 @interface DBViewController ()
-
 @end
 
 @implementation DBViewController
@@ -20,18 +21,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSDictionary *dic = [[NSMutableDictionary alloc] initWithDictionary:@{@"de":@"s"}];
-    NSString *d = NSMutableDictionary.dbObjectForKey(dic, @"de");
-    BOOL empty = NSDictionary.dbIsEmpty(dic);
-    if (empty) {
-        
-    }
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    __block NSInteger dd = 3;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        dd = 99;
+    });
+    NSLog(@"");
 }
 
 @end

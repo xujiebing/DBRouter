@@ -16,6 +16,11 @@ NS_ASSUME_NONNULL_BEGIN
  */
 + (BOOL (^)(NSArray *))dbIsEmpty;
 
+/**
+ 获取数组中对象
+ */
++ (id (^)(NSArray *array, NSUInteger index))dbObjectAtIndex;
+
 @end
 
 @interface NSMutableArray (DBRouter)
@@ -24,6 +29,11 @@ NS_ASSUME_NONNULL_BEGIN
  判断数组是否为空
  */
 + (BOOL (^)(NSMutableArray *))dbIsEmpty;
+
+/**dbA
+ 可变数组中添加对象
+ */
++ (void (^)(NSMutableArray *array, id object))dbAddObject;
 
 @end
 
