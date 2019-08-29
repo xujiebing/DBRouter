@@ -30,7 +30,7 @@
 }
 
 - (void)p_clickBtn {
-    DBRouterManager.routerManager.routerWithName(@"DBPage1");
+    DBRouterManager.routerManager.routerWithUrl(@"DB://m.bwton.com/page2/findpage1u?jumptype=1");
 }
 
 - (void)dbSetParameter:(NSDictionary *)params {

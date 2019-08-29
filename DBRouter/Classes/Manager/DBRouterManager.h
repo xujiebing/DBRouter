@@ -25,31 +25,17 @@ typedef void(^DBRouterComplete)(BOOL complete);
 
 /**
  设置路由文件路径
- routerNameFilePath:页面名与路由url关系配置文件
  routerClassFilePath:路由url与本地类名映射配置文件
  routerWhiteFilePath:白名单路由url配置文件,用于外部跳转
  */
-- (void (^)(NSString *_Nullable routerNameFilePath, NSString *_Nullable routerClassFilePath, NSString *_Nullable routerWhiteFilePath))setRouterFilePath;
+- (void (^)(NSString *_Nullable routerClassFilePath, NSString *_Nullable routerWhiteFilePath))setRouterFilePath;
 
 /**
  更新路由文件路径
- routerNameFilePath:页面名与路由url关系配置文件
  routerClassFilePath:路由url与本地类名映射配置文件
  routerWhiteFilePath:白名单路由url配置文件,用于外部跳转
  */
-- (void (^)(NSString *_Nullable routerNameFilePath, NSString *_Nullable routerClassFilePath, NSString *_Nullable routerWhiteFilePath))reloadRouterFilePath;
-
-/**
- 根据路由名进行跳转
- */
-- (BOOL (^)(NSString *_Nonnull))routerWithName;
-
-/**
- 根据路由名和参数进行跳转
- routerName:路由名
- routerName:路由名
- */
-- (BOOL (^)(NSString *_Nonnull routerName, NSDictionary *_Nullable params))routerWithNameAndParams;
+- (void (^)(NSString *_Nullable routerClassFilePath, NSString *_Nullable routerWhiteFilePath))reloadRouterFilePath;
 
 /**
  根据路由url进行跳转
@@ -58,6 +44,8 @@ typedef void(^DBRouterComplete)(BOOL complete);
 
 /**
  根据路由url和参数进行跳转
+ routerName:路由url
+ params:参数
  */
 - (BOOL (^)(NSString * _Nonnull url, NSDictionary * _Nullable params))routerWithUrlAndParams;
 
@@ -78,11 +66,6 @@ typedef void(^DBRouterComplete)(BOOL complete);
 - (void)popRouter;
 
 /**
- 返回上级页面并传参
- */
-- (void (^)(NSDictionary *_Nullable))popRouterWithResult;
-
-/**
  返回N级页面
  */
 - (void (^)(NSInteger))popRouterWithIndex;
@@ -90,7 +73,7 @@ typedef void(^DBRouterComplete)(BOOL complete);
 /**
  返回指定页面
  */
-- (void (^)(NSString *_Nonnull routerName, BOOL animated))popRouterWithNameAndAnimated;
+- (void (^)(NSString *_Nonnull url, BOOL animated))popRouterWithUrlAndAnimated;
 
 @end
 

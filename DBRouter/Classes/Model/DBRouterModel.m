@@ -12,7 +12,6 @@
 @property (nonatomic, strong, readwrite) NSURLComponents *_Nonnull urlComponents;
 @property (nonatomic, strong, readwrite) NSDictionary * _Nullable params;
 @property (nonatomic, assign, readwrite) DBRouterJumpType jumpType;
-@property (nonatomic, copy, readwrite) NSString * _Nonnull targetURL;
 
 @end
 
@@ -51,7 +50,6 @@
             [dic addEntriesFromDictionary:tempDic];
         }
         weakSelf.params = dic;
-        weakSelf.targetURL = DBRouterTool.filterUrlParamsAndScheme(url);
         return weakSelf;
     };
     return block;

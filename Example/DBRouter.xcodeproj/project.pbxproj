@@ -30,7 +30,6 @@
 		9BDF41782315361600DD877D /* DBViewController4.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BDF41772315361600DD877D /* DBViewController4.m */; };
 		9BF048D323022E840097CC30 /* routerWhiteList.json in Resources */ = {isa = PBXBuildFile; fileRef = 9BF048CF23022E840097CC30 /* routerWhiteList.json */; };
 		9BF048D423022E840097CC30 /* routerClassList.json in Resources */ = {isa = PBXBuildFile; fileRef = 9BF048D023022E840097CC30 /* routerClassList.json */; };
-		9BF048D623022E840097CC30 /* routersNameList.json in Resources */ = {isa = PBXBuildFile; fileRef = 9BF048D223022E840097CC30 /* routersNameList.json */; };
 		BA80D60F5EEA2E88B81721D1 /* Pods_DBRouter_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCC7234116EACDC7A8AB7869 /* Pods_DBRouter_Example.framework */; };
 /* End PBXBuildFile section */
 
@@ -81,7 +80,6 @@
 		9BDF41772315361600DD877D /* DBViewController4.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DBViewController4.m; sourceTree = "<group>"; };
 		9BF048CF23022E840097CC30 /* routerWhiteList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = routerWhiteList.json; sourceTree = "<group>"; };
 		9BF048D023022E840097CC30 /* routerClassList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = routerClassList.json; sourceTree = "<group>"; };
-		9BF048D223022E840097CC30 /* routersNameList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = routersNameList.json; sourceTree = "<group>"; };
 		AFF0D1282954C7E8BFE5F138 /* Pods-DBRouter_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DBRouter_Example.release.xcconfig"; path = "Target Support Files/Pods-DBRouter_Example/Pods-DBRouter_Example.release.xcconfig"; sourceTree = "<group>"; };
 		DCC7234116EACDC7A8AB7869 /* Pods_DBRouter_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DBRouter_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5CA514C83E351C82E70FBF4 /* Pods_DBRouter_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DBRouter_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -231,7 +229,6 @@
 			children = (
 				9BF048CF23022E840097CC30 /* routerWhiteList.json */,
 				9BF048D023022E840097CC30 /* routerClassList.json */,
-				9BF048D223022E840097CC30 /* routersNameList.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -325,7 +322,6 @@
 				71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
 				9BF048D423022E840097CC30 /* routerClassList.json in Resources */,
-				9BF048D623022E840097CC30 /* routersNameList.json in Resources */,
 				9BF048D323022E840097CC30 /* routerWhiteList.json in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
 			);

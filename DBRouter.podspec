@@ -26,6 +26,7 @@ TODO: Add long description of the pod here.
 
   s.source_files = 'DBRouter/Classes/**/*'
   s.prefix_header_file = 'DBRouter/Classes/DBRouterPrefixHeader.pch'
+  s.resource = 'DBRouter/Assets/*.bundle'
   
   # s.resource_bundles = {
   #   'DBRouter' => ['DBRouter/Assets/*.png']

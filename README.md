@@ -36,4 +36,5 @@ DBRouter is available under the MIT license. See the LICENSE file for more info.
 
 1. webView跳转需要集成方控制可跳转的url
 2. 支持http跳转外部浏览器
+3. 参数不能*开头
 
