@@ -26,7 +26,7 @@
         }
         weakSelf.urlComponents = components;
         NSArray *items = components.queryItems;
-        NSMutableDictionary *tempDic = [NSMutableDictionary dictionaryWithCapacity:1];
+        __block NSMutableDictionary *tempDic = [NSMutableDictionary dictionaryWithCapacity:1];
         __block NSInteger jumpType = 1;
         [items enumerateObjectsUsingBlock:^(NSURLQueryItem *item, NSUInteger idx, BOOL * _Nonnull stop) {
             NSString *name = item.name;

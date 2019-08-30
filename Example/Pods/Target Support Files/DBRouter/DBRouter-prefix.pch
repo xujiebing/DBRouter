@@ -31,8 +31,6 @@
 
 #define kDBWeakSelf __weak __typeof(self)weakSelf = self;
 
-// 路由名与url对应关系文件
-static NSString *kDBRouterNameFileName = @"routersNameList";
 // 本地类名路由配置文件
 static NSString *kDBRouterClassFileName = @"routerClassList";
 // 路由本地白名单数据
@@ -44,11 +42,10 @@ static NSString *kDBRouterWhiteFileName = @"routerWhiteList";
 #import <DBRouter/NSString+DBRouter.h>
 #import <DBRouter/NSArray+DBRouter.h>
 #import <DBRouter/UIViewController+DBRouter.h>
-#import <DBRouter/UIApplication+DBRouter.h>
 #import <DBRouter/NSObject+DBRouterMethodSwizzling.h>
 #import <objc/runtime.h>
 #import <DBRouter/DBRouterManager.h>
-#import <DBRouter/DBRouterNotFoundViewController.h>
+#import <DBRouter/DBRouterPopTool.h>
 
 
 static NSString *kDBRouterJumpType = @"jumptype";

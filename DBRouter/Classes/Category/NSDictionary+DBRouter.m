@@ -62,17 +62,13 @@
 
 + (void (^)(NSMutableDictionary * _Nonnull, NSString * _Nonnull, id _Nonnull))dbSetValueForKey {
     void (^block)(NSMutableDictionary *, NSString *, id) = ^(NSMutableDictionary *dic, NSString *key, id value) {
-        if (NSMutableDictionary.dbIsEmpty(dic)) {
+        if (![dic isKindOfClass:[NSMutableDictionary class]]) {
             return ;
         }
         if (NSString.dbIsEmpty(key)) {
             return ;
         }
         if (!value) {
-            return ;
-        }
-        NSArray *array = [dic allKeys];
-        if (![array containsObject:key]) {
             return ;
         }
         [dic setValue:value forKey:key];
@@ -82,17 +78,13 @@
 
 + (void (^)(NSMutableDictionary * _Nonnull, NSString * _Nonnull, id _Nonnull))dbSetObjectForKey {
     void (^block)(NSMutableDictionary *, NSString *, id) = ^(NSMutableDictionary *dic, NSString *key, id object) {
-        if (NSMutableDictionary.dbIsEmpty(dic)) {
+        if (![dic isKindOfClass:[NSMutableDictionary class]]) {
             return ;
         }
         if (NSString.dbIsEmpty(key)) {
             return ;
         }
         if (!object) {
-            return ;
-        }
-        NSArray *array = [dic allKeys];
-        if (![array containsObject:key]) {
             return ;
         }
         [dic setObject:object forKey:key];

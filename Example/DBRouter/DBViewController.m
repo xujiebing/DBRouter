@@ -26,20 +26,20 @@
     [btn setBackgroundColor:[UIColor blueColor]];
     [btn addTarget:self action:@selector(p_clickBtn) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:btn];
-    DBRouterManager.routerManager.setScheme(@[@"DB"]);
+    
+    UIViewController *vc = DBRouterManager.routerManager.viewControllerWithUrl(@"DBRouter://com.xujiebing.DBRouter/page2/findpage");
+    NSLog(@"");
 }
 
 - (void)p_clickBtn {
-    DBRouterManager.routerManager.routerWithUrl(@"DB://m.bwton.com/page2/findpage1u?jumptype=1");
+    DBRouterManager.routerManager.routerWithUrl(@"DBRouter://com.xujiebing.DBRouter/page2/findpage");
+    
 }
 
 - (void)dbSetParameter:(NSDictionary *)params {
     
 }
 
-- (void)dbOnNextPopResult:(NSDictionary *)params {
-    
-}
 
 
 @end

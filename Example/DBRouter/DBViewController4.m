@@ -20,21 +20,29 @@
     self.title = @"page4";
     self.view.backgroundColor = UIColor.whiteColor;
     UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(50, 100, 200, 60)];
-    [btn setBackgroundColor:[UIColor blueColor]];
+    [btn setBackgroundColor:[UIColor lightGrayColor]];
+    [btn setTitle:@"返回2级" forState:UIControlStateNormal];
     [btn addTarget:self action:@selector(p_clickBtn) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:btn];
+    
+    UIButton *btn1 = [[UIButton alloc] initWithFrame:CGRectMake(50, 200, 200, 60)];
+    [btn1 setBackgroundColor:[UIColor lightGrayColor]];
+    [btn1 setTitle:@"返回指定页面" forState:UIControlStateNormal];
+    [btn1 addTarget:self action:@selector(p_clickBtn1) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:btn1];
 }
 
 - (void)p_clickBtn {
     DBRouterManager.routerManager.popRouterWithIndex(2);
 }
 
+- (void)p_clickBtn1 {
+    DBRouterManager.routerManager.popRouterWithUrlAndAnimated(@"DBRouter://com.xujiebing.DBRouter/page2/findpage", YES);
+}
+
 - (void)dbSetParameter:(NSDictionary *)params {
     
 }
 
-- (void)dbOnNextPopResult:(NSDictionary *)params {
-    
-}
 
 @end

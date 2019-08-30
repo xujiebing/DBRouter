@@ -1,4 +1,4 @@
 [
-  "msx://m.bwton.com/login/code",
-  "msx://m.bwton.com/home/index"
+  "DBRouter://com.xujiebing.DBRouter/page2/findpage",
+  "DBRouter://com.xujiebing.DBRouter/page2/findpage1"
 ]

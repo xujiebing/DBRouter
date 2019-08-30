@@ -55,7 +55,7 @@
 
 + (void (^)(NSMutableArray * _Nonnull, id _Nonnull))dbAddObject {
     void (^block)(NSMutableArray *, id) = ^(NSMutableArray *array, id object) {
-        if (NSMutableArray.dbIsEmpty(array)) {
+        if (![array isKindOfClass:[NSMutableArray class]]) {
             return ;
         }
         if (!object) {

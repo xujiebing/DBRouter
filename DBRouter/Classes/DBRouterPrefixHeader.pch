@@ -34,7 +34,7 @@ static NSString *kDBRouterWhiteFileName = @"routerWhiteList";
 #import <DBRouter/NSObject+DBRouterMethodSwizzling.h>
 #import <objc/runtime.h>
 #import <DBRouter/DBRouterManager.h>
-#import <DBRouter/DBRouterNotFoundViewController.h>
+#import <DBRouter/DBRouterPopTool.h>
 
 
 static NSString *kDBRouterJumpType = @"jumptype";

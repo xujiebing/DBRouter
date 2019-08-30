@@ -19,11 +19,6 @@ typedef void(^DBRouterComplete)(BOOL complete);
 + (DBRouterManager *)routerManager;
 
 /**
- 设置合法scheme
- */
-- (void (^)(NSArray *_Nonnull))setScheme;
-
-/**
  设置路由文件路径
  routerClassFilePath:路由url与本地类名映射配置文件
  routerWhiteFilePath:白名单路由url配置文件,用于外部跳转
@@ -55,12 +50,6 @@ typedef void(^DBRouterComplete)(BOOL complete);
 - (BOOL (^)(NSURL *_Nonnull))routerUrl;
 
 /**
- 设置自定义404页面
- 当找不到本地类时, 路由会跳转到内置的404页面,想自定义404页面，可调用此方法
- */
-- (void (^)(UIViewController *_Nonnull))setNontFoundPage;
-
-/**
  返回上级页面
  */
 - (void)popRouter;
@@ -74,6 +63,11 @@ typedef void(^DBRouterComplete)(BOOL complete);
  返回指定页面
  */
 - (void (^)(NSString *_Nonnull url, BOOL animated))popRouterWithUrlAndAnimated;
+
+/**
+ 根据url获取viewController
+ */
+- (UIViewController *(^)(NSString *_Nonnull url))viewControllerWithUrl;
 
 @end
 

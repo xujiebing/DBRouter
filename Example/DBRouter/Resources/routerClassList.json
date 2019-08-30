@@ -1,31 +1,31 @@
 {
     "page3": [
         {
-            "url": "DB://m.bwton.com/page3?jumptype=*",
+            "url": "DBRouter://com.xujiebing.DBRouter/page3?jumptype=*",
             "iclass": "DBViewController",
             "aclass": "com.bwton.metro.reactnative.business.BwtRNActivity"
         }
     ],
     "page2": [
         {
-            "url": "DB://m.bwton.com/page2/findpage?jumptype=*",
+            "url": "DBRouter://com.xujiebing.DBRouter/page2/findpage?jumptype=*",
             "iclass": "DBViewController1",
             "aclass": "com.bwton.metro.find.FindFragment"
         },
         {
-            "url": "DB://m.bwton.com/page2/findpage1?jumptype=*",
+            "url": "DBRouter://com.xujiebing.DBRouter/page2/findpage1?jumptype=*",
             "iclass": "DBViewController4",
             "aclass": "com.bwton.metro.find.FindFragment"
         }
     ],
     "page1": [
         {
-            "url": "DB://m.bwton.com/page1/index",
+            "url": "DBRouter://com.xujiebing.DBRouter/page1/index",
             "iclass": "DBViewController2",
             "aclass": "com.bwton.metro.base.webview.BwtWebviewFragment"
         },
         {
-            "url": "DB://m.bwton.com/page1/index1",
+            "url": "DBRouter://com.xujiebing.DBRouter/page1/index1",
             "iclass": "DBViewController3",
             "aclass": "com.bwton.metro.base.webview.BwtWebviewFragment"
         }

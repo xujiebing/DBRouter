@@ -26,15 +26,12 @@
 }
 
 - (void)p_clickBtn {
-    DBRouterManager.routerManager.routerWithUrl(@"DB://m.bwton.com/page1/index1?jumptype=1");
+    DBRouterManager.routerManager.routerWithUrl(@"DBRouter://com.xujiebing.DBRouter/page1/index1?jumptype=1");
 }
 
 - (void)dbSetParameter:(NSDictionary *)params {
     
 }
 
-- (void)dbOnNextPopResult:(NSDictionary *)params {
-    
-}
 
 @end

@@ -16,6 +16,15 @@
         if(NSString.dbIsEmpty(url)) {
             return targetUrl;
         }
+        NSArray *urlArray = [url componentsSeparatedByString:@"://"];
+        if (NSArray.dbIsEmpty(urlArray)) {
+            return targetUrl;
+        }
+        NSString *urlScheme = NSArray.dbObjectAtIndex(urlArray,0);
+        NSString *lowercaseUrlScheme = urlScheme.lowercaseString;
+        urlScheme = [urlScheme stringByAppendingString:@"://"];
+        lowercaseUrlScheme = [lowercaseUrlScheme stringByAppendingString:@"://"];
+        url = [url stringByReplacingOccurrencesOfString:urlScheme withString:lowercaseUrlScheme];
         // 过滤参数
         NSArray *array = [url componentsSeparatedByString:@"?"];
         targetUrl = [array firstObject];
