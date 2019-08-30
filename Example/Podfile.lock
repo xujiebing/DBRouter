@@ -1,5 +1,5 @@
 PODS:
-  - DBRouter (0.1.0)
+  - DBRouter (1.0.0)
 
 DEPENDENCIES:
   - DBRouter (from `../`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  DBRouter: bc78c01d24b7845fa21581da3566693edb80b392
+  DBRouter: a67f634d396c4233292ef14e7eb221fcf3964ec7
 
 PODFILE CHECKSUM: 70d7b078e5edb46f76b9098d27d4675e66207dcb
 

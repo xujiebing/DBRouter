@@ -20,6 +20,7 @@
 #import "DBRouterBaseModel.h"
 #import "DBRouterModel.h"
 #import "DBRouterTool.h"
+#import "DBRouterPopTool.h"
 
 FOUNDATION_EXPORT double DBRouterVersionNumber;
 FOUNDATION_EXPORT const unsigned char DBRouterVersionString[];

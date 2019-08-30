@@ -30,7 +30,6 @@ static NSString *kDBRouterWhiteFileName = @"routerWhiteList";
 #import <DBRouter/NSString+DBRouter.h>
 #import <DBRouter/NSArray+DBRouter.h>
 #import <DBRouter/UIViewController+DBRouter.h>
-#import <DBRouter/UIApplication+DBRouter.h>
 #import <DBRouter/NSObject+DBRouterMethodSwizzling.h>
 #import <objc/runtime.h>
 #import <DBRouter/DBRouterManager.h>
