@@ -20,13 +20,12 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
+    [super viewDidLoad];    
     self.title = @"page0";
     UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(50, 100, 200, 60)];
     [btn setBackgroundColor:[UIColor blueColor]];
     [btn addTarget:self action:@selector(p_clickBtn) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:btn];
-    
     UIViewController *vc = DBRouterManager.routerManager.viewControllerWithUrl(@"DBRouter://com.xujiebing.DBRouter/page2/findpage");
     NSLog(@"");
 }
