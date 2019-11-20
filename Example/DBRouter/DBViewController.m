@@ -31,7 +31,8 @@
 }
 
 - (void)p_clickBtn {
-    DBRouterManager.routerManager.routerWithUrl(@"DBRouter://com.xujiebing.DBRouter/page2/findpage");
+//    DBRouterManager.routerManager.routerWithUrl(@"DBRouter://com.xujiebing.DBRouter/page2/findpage");
+    DBRouterManager.routerManager.routerWithUrlAndParams(@"DBRouter://com.xujiebing.DBRouter/page2/findpage",@{@"test":@"111"});
     
 }
 
