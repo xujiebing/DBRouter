@@ -13,7 +13,7 @@
 + (UIViewController *)lastViewController {
     UIViewController *viewController = nil;
     
-    UIViewController *vc = [UIApplication sharedApplication].keyWindow.rootViewController;
+    UIViewController *vc = [UIApplication sharedApplication].delegate.window.rootViewController;
     
     if([vc isKindOfClass:[UITabBarController class]]) {
         viewController = ((UITabBarController *)vc).selectedViewController;
@@ -24,6 +24,9 @@
     }
     if (viewController.presentedViewController) {
         viewController = viewController.presentedViewController;
+    }
+    if ([viewController isKindOfClass:[UINavigationController class]]) {
+        viewController = ((UINavigationController *)viewController).visibleViewController;
     }
     return viewController;
 }
