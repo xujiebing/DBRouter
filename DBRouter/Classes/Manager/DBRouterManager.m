@@ -389,7 +389,7 @@ static DBRouterManager *routerManager = nil;
         if (type == DBRouterPresent) {
             // 模态
             UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
-//            nav.modalPresentationStyle = UIModalPresentationFullScreen;
+            nav.modalPresentationStyle = UIModalPresentationFullScreen;
             [lastViewController presentViewController:nav animated:YES completion:nil];
             complete = YES;
             return complete;
